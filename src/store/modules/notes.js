@@ -18,7 +18,11 @@ export default {
             }
         ]
     },
-    getters: {},
+    getters: {
+        getNotes(state) {
+            return state.notes
+        }
+    },
     mutations: {},
     actions: {},
 }

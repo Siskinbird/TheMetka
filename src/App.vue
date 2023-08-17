@@ -2,6 +2,7 @@
   <div class="container">
     <div id="app">
       <mainTitle title="Note App v2.1" sub-title="Hello!"/>
+      <notes/>
     </div>
   </div>
 </template>
@@ -10,10 +11,12 @@
 
 
 import mainTitle from "@/components/mainTitle";
+import notes from "@/components/notes";
 
 export default {
   name: 'App',
   components: {
+    notes,
     mainTitle
   },
 }
