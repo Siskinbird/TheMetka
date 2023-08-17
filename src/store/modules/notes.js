@@ -15,7 +15,12 @@ export default {
                 title: 'Third Note',
                 descr: 'Description for third note',
                 date: new Date(Date.now()).toLocaleString()
-            }
+            },
+            {
+                title: 'Four Note',
+                descr: 'Description for four note',
+                date: new Date(Date.now()).toLocaleString()
+            },
         ]
     },
     getters: {
