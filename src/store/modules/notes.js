@@ -28,6 +28,14 @@ export default {
             return state.notes
         }
     },
-    mutations: {},
-    actions: {},
+    mutations: {
+        addNote(state, newNote) {
+            state.notes.push(newNote)
+        },
+    },
+    actions: {
+        addNote({commit}, payload) {
+            commit('addNote', payload)
+        }
+    },
 }

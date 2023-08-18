@@ -13,7 +13,7 @@
       ></b-form-textarea>
     </div>
     <div>
-      <b-button @click="setNote" variant="success">Сохранить</b-button>
+      <b-button @click="addNote" variant="success">Сохранить</b-button>
     </div>
   </div>
 </template>
@@ -33,23 +33,21 @@ export default {
   props: {
     title: {
       type: String,
-      //required: true
     },
     descr: {
       type: String,
-      //required: true
     }
-  },
-  computed: {
-    ...mapActions(['setNote'])
-
   },
 
   methods: {
-    setNote() {
-      //console.log(this.note)
-      this.$store.dispatch('setNote', {note: this.note})
+    addNote() {
+      let {title, descr} = this.note
+      this.$store.dispatch('addNote', {
+        title,
+        descr,
+        date: new Date(Date.now()).toLocaleString()
+      })
     }
-  },
+  }
 }
 </script>
