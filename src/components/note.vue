@@ -1,5 +1,5 @@
 <template>
-  <div class="note col-12 col-sm-6 g-2">
+  <div class="note col-12 col-sm-6 g-4">
     <div class="note-body border border-primary rounded-top rounded-bottom shadow">
       <div class="note-header col-12 border-bottom border-primary bg-primary bg-gradient d-flex align-baseline">
         <div class="note-title col-10">
@@ -35,6 +35,9 @@ p {
   padding: 8px;
   margin: 0;
 }
+//.note {
+//  padding: 6px;
+//}
 
 .note-remove {
   //padding-top: 8px;

@@ -1,4 +1,5 @@
 export default {
+    //Initial state
     state: {
         notes: [
             {
@@ -31,11 +32,11 @@ export default {
     mutations: {
         addNote(state, newNote) {
             state.notes.push(newNote)
-        },
+        }
     },
     actions: {
         addNote({commit}, payload) {
             commit('addNote', payload)
-        }
-    },
+        },
+    }
 }
