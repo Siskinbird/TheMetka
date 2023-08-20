@@ -6,7 +6,7 @@
           <p class="text-light">{{ note.title }}</p>
         </div>
         <div class="note-remove col-2 d-flex align-items-center justify-content-center">
-          <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light"/>
+          <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light" @click="removeNote(note.index)"/>
         </div>
       </div>
       <div class="note-description">
@@ -20,11 +20,18 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   props: {
     note: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    removeNote(index) {
+      this.$store.dispatch("removeNote", index)
     }
   }
 }

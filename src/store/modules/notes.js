@@ -32,11 +32,17 @@ export default {
     mutations: {
         addNote(state, newNote) {
             state.notes.push(newNote)
+        },
+        removeNote(state, index) {
+            state.notes.splice(index, 1)
         }
     },
     actions: {
         addNote({commit}, payload) {
             commit('addNote', payload)
         },
+        removeNote({commit}, payload) {
+            commit('removeNote', payload)
+        }
     }
 }

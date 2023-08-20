@@ -6,13 +6,24 @@
 
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import note from "@/components/note";
 
 export default {
   components: {note},
+  // props: {
+  //   notes: {
+  //     type: Array,
+  //     required: true
+  //   }
+  // },
   computed: {
-    ...mapGetters(['getNotes'])
+    ...mapGetters(['getNotes']),
+  },
+  methods: {
+    getNoteIndex(i) {
+      console.log(`${i}`);
+    }
   }
 }
 </script>
