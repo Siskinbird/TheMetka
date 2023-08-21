@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     removeNote(index) {
+      console.log(index);
       this.$store.dispatch("removeNote", index)
     }
   }

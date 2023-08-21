@@ -3,25 +3,36 @@ export default {
     state: {
         notes: [
             {
-                title: 'First Note',
-                descr: 'Description for first note',
+                title: 'Интересно...',
+                descr: 'Как выровнять блок по центру контейнера?',
                 date: new Date(Date.now()).toLocaleString()
             },
             {
-                title: 'Second Note',
-                descr: 'Description for second note',
+                title: 'Русский',
+                descr: 'По русски читать гораздо проще , чем на не русском',
                 date: new Date(Date.now()).toLocaleString()
             },
             {
-                title: 'Third Note',
-                descr: 'Description for third note',
+                title: 'Будет так',
+                descr: 'Только так как ты захочешь, не иначе',
                 date: new Date(Date.now()).toLocaleString()
             },
             {
-                title: 'Four Note',
-                descr: 'Description for four note',
+                title: 'Интересные факты',
+                descr: 'Если долго заниматься, что то да получится',
                 date: new Date(Date.now()).toLocaleString()
             },
+            {
+                title: 'Тестовая',
+                descr: 'Интересно, сколько ещё нужно времени, для того что бы заработало',
+                date: new Date(Date.now()).toLocaleString()
+            },
+            {
+                title: 'Вспоминая начало',
+                descr: 'Видно что прогресс есть,и он продолжает идти вперед!',
+                date: new Date(Date.now()).toLocaleString()
+            },
+
         ]
     },
     getters: {
