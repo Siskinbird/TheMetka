@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
 
 export default {
+
   props: {
     note: {
       type: Object,
       required: true
-    }
+    },
   },
   methods: {
     removeNote(index) {

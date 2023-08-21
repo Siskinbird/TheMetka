@@ -44,9 +44,10 @@ export default {
     return {
       note: {
         title: '',
-        descr: ''
+        descr: '',
+        nameState: false
+        }
       }
-    }
   },
   props: {
     title: {
@@ -63,14 +64,22 @@ export default {
       this.note.descr = ''
     },
     addNote() {
-      let {title, descr} = this.note
-      this.$store.dispatch('addNote', {
-        title,
-        descr,
-        date: new Date(Date.now()).toLocaleString()
-      })
+      if (this.nameState && (this.note.descr = '')) {
+        let {title, descr} = this.note
+        this.$store.dispatch('addNote', {
+          title,
+          descr,
+          date: new Date(Date.now()).toLocaleString()
+        })
+      } else {
+        console.log('Title not be a empty')
+      }
+
       this.reset()
     },
+    validNote() {
+
+    }
   }
 }
 </script>

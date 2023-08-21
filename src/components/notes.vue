@@ -1,6 +1,6 @@
 <template>
   <div class="notes row">
-    <note v-for="(note, i) in getNotes" :key="i" :note="note" @click="getNoteIndex(i)"/>
+    <note v-for="(note, i) in getNotes" :key="i" :note="note" :notes="getNotes"/>
   </div>
 </template>
 
