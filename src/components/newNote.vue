@@ -5,14 +5,14 @@
       <b-form-input
           id="input-live"
           v-model="note.title"
-          :state="nameState"
+          :state="null"
           aria-describedby="input-live-help input-live-feedback"
           placeholder="Введите название заметки"
           trim
       ></b-form-input>
-      <b-form-invalid-feedback id="input-live-feedback">
-        Название заметки должно состоять из 3х или более букв!
-      </b-form-invalid-feedback>
+<!--      <b-form-invalid-feedback id="input-live-feedback">-->
+<!--        Название заметки должно состоять из 3х или более букв!-->
+<!--      </b-form-invalid-feedback>-->
 <!--      <b-form-input type="text" v-model="note.title" required placeholder="Введите название заметки"/>-->
     </div>
     <div class="note-descr shadow-sm">
@@ -36,16 +36,14 @@ import {mapActions} from "vuex";
 
 export default {
   computed: {
-    nameState() {
-      return this.note.title.length > 2
-    }
+
   },
   data() {
     return {
       note: {
         title: '',
         descr: '',
-        nameState: false
+        nameState: null
         }
       }
   },
@@ -55,26 +53,42 @@ export default {
     },
     descr: {
       type: String,
+    },
+    nameState: {
+      type: Boolean
     }
   },
 
   methods: {
+    changeState() {
+      if (this.note.title.length > 3) {
+        return this.nameState = true;
+      } else if (this.note.title.length < 3) {
+        return this.nameState = false
+      } else {
+        return this.nameState = null
+      }
+    },
     reset() {
       this.note.title = ''
       this.note.descr = ''
     },
+    //TODO Изменить валидацию через функцию,
+    //TODO Разбери эту хуету,
     addNote() {
-      if (this.nameState && (this.note.descr = '')) {
+      if(!this.changeState) {
+
+      if ((this.note.title !== '') &&  (this.note.descr !== '')) {
         let {title, descr} = this.note
         this.$store.dispatch('addNote', {
           title,
           descr,
           date: new Date(Date.now()).toLocaleString()
         })
+      }
       } else {
         console.log('Title not be a empty')
       }
-
       this.reset()
     },
     validNote() {
