@@ -2,8 +2,8 @@
   <div class="container border border-success mt-4 mb-4 pb-4 rounded-top rounded-bottom shadow-lg">
     <div id="app">
       <mainTitle title="Note App v2.1" sub-title="Hello!"/>
-      <newNote/>
-      <notes/>
+      <newNote :note="note"/>
+      <notes :notes="$store.getters.getNotes"/>
     </div>
   </div>
 </template>
@@ -16,12 +16,23 @@ import notes from "@/components/notes";
 import newNote from "@/components/newNote";
 
 export default {
-  name: 'App',
   components: {
     notes,
     mainTitle,
     newNote
   },
+  data () {
+    return {
+      note: {
+        title: '',
+        descr: '',
+        //nameState: null,
+        date: new Date(Date.now()).toLocaleString()
+      }
+    }
+  },
+
+
 }
 
 </script>

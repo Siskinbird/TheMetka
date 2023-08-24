@@ -1,6 +1,6 @@
 <template>
   <div class="notes row">
-    <note v-for="(note, i) in getNotes" :key="i" :note="note" :notes="getNotes"/>
+    <note v-for="(note, i) in getNotes" :key="i" :note="note"/>
   </div>
 </template>
 
@@ -11,12 +11,12 @@ import note from "@/components/note";
 
 export default {
   components: {note},
-  // props: {
-  //   notes: {
-  //     type: Array,
-  //     required: true
-  //   }
-  // },
+  props: {
+    notes: {
+      type: Array,
+      required: true
+    }
+  },
   computed: {
     ...mapGetters(['getNotes']),
   },
