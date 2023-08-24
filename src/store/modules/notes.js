@@ -46,6 +46,9 @@ export default {
         },
         removeNote(state, index) {
             state.notes.splice(index, 1)
+        },
+        resetNote(state, payload) {
+            state.note
         }
     },
     actions: {
@@ -54,6 +57,9 @@ export default {
         },
         removeNote({commit}, payload) {
             commit('removeNote', payload)
+        },
+        resetNote({commit}, payload) {
+            commit('resetNote', payload)
         }
     }
 }

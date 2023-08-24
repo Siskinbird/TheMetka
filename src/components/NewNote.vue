@@ -45,7 +45,7 @@ export default {
         }
       }
   },
-  namespaced: true,
+  //namespaced: true,
   // props: {
   //   note: {
   //     type: Object,
@@ -62,12 +62,12 @@ export default {
 
   methods: {
     reset() {
-      this.note.title = ''
-      this.note.descr = ''
-      this.note.nameState = null
+      this.$store.dispatch('resetNote', {
+        title: '',
+        descr: '',
+        nameState: null
+      })
     },
-    //TODO Изменить валидацию через функцию,
-    //TODO Разбери эту хуету,
     addNote() {
       if ((this.note.title.length > 2) &&  (this.note.descr !== '')) {
         let {title, descr} = this.note
@@ -81,7 +81,7 @@ export default {
          this.note.nameState = false
         console.log('Title not be a empty')
       }
-    },
+    }
   }
 }
 </script>

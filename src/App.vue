@@ -1,9 +1,14 @@
 <template>
   <div class="container border border-success mt-4 mb-4 pb-4 rounded-top rounded-bottom shadow-lg">
     <div id="app">
+                  <!--H1 MAIN TITLE-->
       <mainTitle title="Note App v2.1" sub-title="Hello!"/>
+
+                <!--NEW NOTE COMPONENT-->
       <newNote :note="note"/>
-      <notes :notes="$store.getters.getNotes"/>
+
+                  <!--NOTES COMPONENT-->
+      <notes :notes="getNotes"/>
     </div>
   </div>
 </template>
@@ -11,9 +16,10 @@
 <script>
 
 
-import mainTitle from "@/components/mainTitle";
-import notes from "@/components/notes";
-import newNote from "@/components/newNote";
+import mainTitle from "@/components/MainTitle";
+import notes from "@/components/Notes";
+import newNote from "@/components/NewNote";
+import {mapGetters} from "vuex";
 
 export default {
   components: {
@@ -21,14 +27,16 @@ export default {
     mainTitle,
     newNote
   },
+  computed: {
+    ...mapGetters(['getNotes']),
+  },
   data () {
     return {
       note: {
         title: '',
         descr: '',
-        //nameState: null,
         date: new Date(Date.now()).toLocaleString()
-      }
+      },
     }
   },
 
