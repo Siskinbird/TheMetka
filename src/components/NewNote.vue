@@ -1,5 +1,8 @@
 <template>
   <div>
+
+    <!--DANGER MESSAGE-->
+    <message v-if="message" :message="message"/>
     <div class="note-title mb-3 shadow-sm">
       <label for="input-live">Title:</label>
       <b-form-input
@@ -32,12 +35,16 @@
 </template>
 
 <script>
+import message from "@/components/Message";
 import {mapActions} from "vuex";
 
 export default {
-
+  components: {
+    message
+  },
   data() {
     return {
+      message: null,
       note: {
         title: '',
         descr: '',
@@ -62,11 +69,9 @@ export default {
 
   methods: {
     reset() {
-      this.$store.dispatch('resetNote', {
-        title: '',
-        descr: '',
-        nameState: null
-      })
+      this.note.title = '',
+          this.note.descr = '',
+          this.message = null
     },
     addNote() {
       if ((this.note.title.length > 2) &&  (this.note.descr !== '')) {
@@ -78,7 +83,8 @@ export default {
         })
         this.reset()
       } else {
-         this.note.nameState = false
+         this.note.nameState = true
+        this.message = 'Title cunt be empty'
         console.log('Title not be a empty')
       }
     }

@@ -21,6 +21,7 @@ import notes from "@/components/Notes";
 import newNote from "@/components/NewNote";
 import {mapGetters} from "vuex";
 
+
 export default {
   components: {
     notes,
