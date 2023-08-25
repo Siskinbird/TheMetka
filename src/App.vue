@@ -8,7 +8,7 @@
       <newNote :note="note"/>
 
                   <!--NOTES COMPONENT-->
-      <notes :notes="getNotes"/>
+      <notes :notes="getNotes" :posts="getPosts"/>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     newNote
   },
   computed: {
-    ...mapGetters(['getNotes']),
+    ...mapGetters(['getNotes','getPosts']),
   },
   data () {
     return {

@@ -1,6 +1,9 @@
+import axios from "axios";
+
 export default {
     //Initial state
     state: {
+        posts: [],
         notes: [
             {
                 title: 'Интересно...',
@@ -38,6 +41,9 @@ export default {
     getters: {
         getNotes(state) {
             return state.notes
+        },
+        getPosts(state) {
+            return state.posts
         }
     },
     mutations: {
@@ -47,6 +53,9 @@ export default {
         removeNote(state, index) {
             state.notes.splice(index, 1)
         },
+        fetchPosts(state, posts) {
+            state.posts = posts;
+        }
     },
     actions: {
         addNote({commit}, payload) {
@@ -55,6 +64,18 @@ export default {
         removeNote({commit}, payload) {
             commit('removeNote', payload)
         },
+        fetchPosts({commit}) {
+            return axios.get('https://jsonplaceholder.typicode.com/posts?limit10')
+                .then((posts) => {
+                    commit('fetchPosts', posts.data)
+                    console.log(posts.data);
+                    return posts
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return error
+                })
+        }
         // resetNote({commit}, payload) {
         //     commit('resetNote', payload)
         // }

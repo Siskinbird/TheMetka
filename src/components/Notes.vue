@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
+    <button @click="fetchPosts">Fetch</button>
 <!--    <note v-for="(note, i) in getNotes" :key="i" :note="note"/>-->
   </div>
 </template>
@@ -33,14 +34,21 @@ export default {
       type: Array,
       required: true
     },
+    posts: {
+      type: Array,
+      required: true
+    }
   },
   computed: {
-    ...mapGetters(['getNotes']),
+    ...mapGetters(['getNotes', 'getPosts']),
   },
   methods: {
     removeNote(i) {
       console.log(i);
       this.$store.dispatch("removeNote", i)
+    },
+    fetchPosts() {
+      this.$store.dispatch('fetchPosts')
     }
   },
     getNoteIndex(i) {

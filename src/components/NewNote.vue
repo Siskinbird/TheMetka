@@ -4,7 +4,7 @@
     <!--DANGER MESSAGE-->
     <message v-if="message" :message="message"/>
     <div class="note-title mb-3 shadow-sm">
-      <label for="input-live">Title:</label>
+<!--      <label for="input-live">Title:</label>-->
       <b-form-input
           class="title-input"
           id="input-live"
@@ -83,8 +83,8 @@ export default {
         })
         this.reset()
       } else {
-         this.note.nameState = true
-        this.message = 'Title cunt be empty'
+         // this.note.nameState = true
+        this.message = 'Title can`t be empty'
         console.log('Title not be a empty')
       }
     }
