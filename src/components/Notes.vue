@@ -1,5 +1,6 @@
 <template>
   <div class="notes row">
+
     <div class="note col-12 col-sm-6 g-4" v-for="(note, i) in getNotes" :key="i">
       <div class="note-body border border-primary rounded-top rounded-bottom shadow">
         <div class="note-header col-12 border-bottom border-primary bg-primary bg-gradient d-flex align-baseline">
@@ -18,7 +19,7 @@
         </div>
       </div>
     </div>
-    <button @click="fetchPosts">Fetch</button>
+<!--    <button @click="fetchPosts">Fetch</button>-->
 <!--    <note v-for="(note, i) in getNotes" :key="i" :note="note"/>-->
   </div>
 </template>
@@ -26,35 +27,41 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import search from "@/components/Search";
 
 
 export default {
-  props: {
-    notes: {
-      type: Array,
-      required: true
+  // components: {
+  //   search
+  // },
+  //   data() {
+  //     return {
+  //       search: '',
+  //     }
+  //   },
+    props: {
+      notes: {
+        type: Array,
+        required: true
+      },
     },
-    posts: {
-      type: Array,
-      required: true
-    }
-  },
-  computed: {
-    ...mapGetters(['getNotes', 'getPosts']),
-  },
-  methods: {
-    removeNote(i) {
-      console.log(i);
-      this.$store.dispatch("removeNote", i)
+    computed: {
+      ...mapGetters(['getNotes', 'getPosts']),
     },
-    fetchPosts() {
-      this.$store.dispatch('fetchPosts')
-    }
-  },
-    getNoteIndex(i) {
-      console.log(`${i}`);
-    }
+    methods: {
+      removeNote(i) {
+        console.log(i);
+        this.$store.dispatch("removeNote", i)
+      },
+      fetchPosts() {
+        this.$store.dispatch('fetchPosts')
+      },
+      getNoteIndex(i) {
+        console.log(`${i}`);
+      }
+  }
 }
+
 </script>
 
 <style lang="scss" scoped>

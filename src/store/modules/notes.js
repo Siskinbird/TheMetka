@@ -47,6 +47,9 @@ export default {
         }
     },
     mutations: {
+        // setNotes(state, filterNotes) {
+        //     state.notes.push(filterNotes)
+        // },
         addNote(state, newNote) {
             state.notes.push(newNote)
         },
@@ -58,6 +61,9 @@ export default {
         }
     },
     actions: {
+        // setNotes({commit}, payload) {
+        //   commit('setNotes', payload)
+        // },
         addNote({commit}, payload) {
             commit('addNote', payload)
         },

@@ -7,39 +7,90 @@
                 <!--NEW NOTE COMPONENT-->
       <newNote :note="note"/>
 
+
+      <search
+          :value="search"
+          @search="search = $event"
+      />
+
                   <!--NOTES COMPONENT-->
-      <notes :notes="getNotes" :posts="getPosts"/>
+      <notes
+          :notes="notesFilter"
+      />
     </div>
   </div>
-</template>
+</template>"
 
 <script>
 
 
 import mainTitle from "@/components/MainTitle";
 import notes from "@/components/Notes";
+import search from "@/components/Search";
 import newNote from "@/components/NewNote";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 
 export default {
   components: {
     notes,
     mainTitle,
-    newNote
+    newNote,
+    search
   },
-  computed: {
-    ...mapGetters(['getNotes','getPosts']),
-  },
-  data () {
+  data() {
     return {
+      search: '',
       note: {
         title: '',
         descr: '',
         date: new Date(Date.now()).toLocaleString()
       },
+      notes: this.$store.state.notes.notes,
     }
   },
+
+  computed: {
+    notesFilter() {
+      let array = this.notes,
+          search = this.search
+      if(!search) return array
+      //Small
+      search = search.trim().toLowerCase()
+      //Filter
+      array = array.filter(function(item) {
+        if(item.title.toLowerCase().indexOf(search) !== -1) {
+          return item
+        }
+      })
+      //Error
+      console.log(array);
+      return array
+    },
+
+    // ...mapGetters(['getNotes','getPosts']),
+    //...mapActions(['setNotes']),
+
+    // notesFilter() {
+    //   let notesArr = this.notes,
+    //       search = this.search
+    //   //Blank title
+    //   if(!search) {
+    //     return notesArr
+    //   } else {
+    //     //Filter
+    //     search = search.trim().toLowerCase()
+    //     notesArr = notesArr.filter(function(item) {
+    //       if(item.title.toLowerCase().indexOf(search) !== -1) {
+    //         return item
+    //       }
+    //     })
+    //     //Error
+    //     return notesArr
+    //   }
+    // }
+  },
+
 
 
 }

@@ -28,15 +28,16 @@
       ></b-form-textarea>
     </div>
     <div class="mt-4 d-flex justify-content-between">
-      <b-button @click="reset" variant="danger">Сбросить</b-button>
-      <b-button @click="addNote" variant="success">Сохранить</b-button>
+      <b-button @click="reset" variant="danger" class="col-2">Сбросить</b-button>
+      <b-button @click="addNote" variant="success" class="col-2">Сохранить</b-button>
     </div>
   </div>
 </template>
 
 <script>
 import message from "@/components/Message";
-import {mapActions} from "vuex";
+
+
 
 export default {
   components: {
@@ -49,8 +50,8 @@ export default {
         title: '',
         descr: '',
         nameState: null
-        }
       }
+    }
   },
   //namespaced: true,
   // props: {
@@ -61,12 +62,11 @@ export default {
   // },
   computed: {
     nameState() {
-      if(this.note.title.length === 0) {
+      if (this.note.title.length === 0) {
         return this.note.nameState = null
       } else return this.note.title.length > 2;
     }
   },
-
   methods: {
     reset() {
       this.note.title = '',
@@ -74,7 +74,7 @@ export default {
           this.message = null
     },
     addNote() {
-      if ((this.note.title.length > 2) &&  (this.note.descr !== '')) {
+      if ((this.note.title.length > 2) && (this.note.descr !== '')) {
         let {title, descr} = this.note
         this.$store.dispatch('addNote', {
           title,
@@ -83,7 +83,7 @@ export default {
         })
         this.reset()
       } else {
-         // this.note.nameState = true
+        // this.note.nameState = true
         this.message = 'Title can`t be empty'
         console.log('Title not be a empty')
       }
