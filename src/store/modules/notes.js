@@ -42,6 +42,20 @@ export default {
         getNotes(state) {
             return state.notes
         },
+        getSearchNotes: state => value => {
+            let array = state.notes
+            if (!value) {
+                return array
+            } else {
+                value = value.trim().toLowerCase()
+                array = array.filter(function (item) {
+                    if (item.title.toLowerCase().indexOf(value) !== -1) {
+                        return item
+                    }
+                })
+                return array;
+            }
+        },
         getPosts(state) {
             return state.posts
         }

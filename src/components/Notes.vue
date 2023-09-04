@@ -1,7 +1,7 @@
 <template>
   <div class="notes row">
 
-    <div class="note col-12 col-sm-6 g-4" v-for="(note, i) in getNotes" :key="i">
+    <div class="note col-12 col-sm-6 g-4" v-for="(note, i) in notes" :key="i">
       <div class="note-body border border-primary rounded-top rounded-bottom shadow">
         <div class="note-header col-12 border-bottom border-primary bg-primary bg-gradient d-flex align-baseline">
           <div class="note-title col-10">
@@ -19,8 +19,6 @@
         </div>
       </div>
     </div>
-<!--    <button @click="fetchPosts">Fetch</button>-->
-<!--    <note v-for="(note, i) in getNotes" :key="i" :note="note"/>-->
   </div>
 </template>
 
@@ -31,34 +29,23 @@ import search from "@/components/Search";
 
 
 export default {
-  // components: {
-  //   search
-  // },
-  //   data() {
-  //     return {
-  //       search: '',
-  //     }
-  //   },
-    props: {
-      notes: {
-        type: Array,
-        required: true
-      },
+  props: {
+    notes: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    removeNote(i) {
+      console.log(i);
+      this.$store.dispatch("removeNote", i)
     },
-    computed: {
-      ...mapGetters(['getNotes', 'getPosts']),
+    fetchPosts() {
+      this.$store.dispatch('fetchPosts')
     },
-    methods: {
-      removeNote(i) {
-        console.log(i);
-        this.$store.dispatch("removeNote", i)
-      },
-      fetchPosts() {
-        this.$store.dispatch('fetchPosts')
-      },
-      getNoteIndex(i) {
-        console.log(`${i}`);
-      }
+    getNoteIndex(i) {
+      console.log(`${i}`);
+    }
   }
 }
 
