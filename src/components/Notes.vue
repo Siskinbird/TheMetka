@@ -37,14 +37,14 @@ export default {
   },
   methods: {
     removeNote(i) {
-      console.log(i);
+      console.log('Note id is ' + this.notes[i].id);
       this.$store.dispatch("removeNote", i)
     },
     fetchPosts() {
       this.$store.dispatch('fetchPosts')
     },
     getNoteIndex(i) {
-      console.log(`${i}`);
+      console.log(`${this.notes[i].id}`);
     }
   }
 }

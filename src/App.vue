@@ -41,18 +41,19 @@ export default {
   },
   data() {
     return {
+      id: notes.length + 1,
       search: '',
       note: {
         title: '',
         descr: '',
         date: new Date(Date.now()).toLocaleString()
       },
-      notes: this.$store.getters.getNotes,
+      notes: this.getNotes,
     }
   },
 
   computed: {
-    ...mapGetters(['getSearchNotes']),
+    ...mapGetters(['getSearchNotes', "getNotes"]),
     notesFilter () {
       return this.getSearchNotes(this.search)
     }

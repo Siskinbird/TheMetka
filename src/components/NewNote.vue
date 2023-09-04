@@ -53,13 +53,6 @@ export default {
       }
     }
   },
-  //namespaced: true,
-  // props: {
-  //   note: {
-  //     type: Object,
-  //     required: true
-  //   }
-  // },
   computed: {
     nameState() {
       if (this.note.title.length === 0) {
@@ -77,13 +70,13 @@ export default {
       if ((this.note.title.length > 2) && (this.note.descr !== '')) {
         let {title, descr} = this.note
         this.$store.dispatch('addNote', {
+          id: this.$store.getters.getNotes.length + 1,
           title,
           descr,
           date: new Date(Date.now()).toLocaleString()
         })
         this.reset()
       } else {
-        // this.note.nameState = true
         this.message = 'Title can`t be empty'
         console.log('Title not be a empty')
       }
