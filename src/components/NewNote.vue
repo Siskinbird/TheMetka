@@ -28,8 +28,9 @@
       ></b-form-textarea>
     </div>
     <div class="mt-4 d-flex justify-content-between">
-      <b-button @click="reset" variant="danger" class="col-2">Сбросить</b-button>
-      <b-button @click="addNote" variant="success" class="col-2">Сохранить</b-button>
+      <b-button @click="reset" variant="danger" class="col-4 col-md-5">Сбросить</b-button>
+
+      <b-button @click="addNote" variant="success" class="col-4 col-md-5">Сохранить</b-button>
     </div>
   </div>
 </template>

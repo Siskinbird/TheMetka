@@ -1,6 +1,6 @@
 <template>
-  <div class="search mt-4">
-    <b-form-input class="test-input col-8" type="search" v-model="search" :placeholder="placeholder"/>
+  <div class="search col-10">
+    <b-form-input type="search" v-model="search" :placeholder="placeholder"/>
 <!--      <b-icon class="test-position col-2" icon="search" font-scale="1"></b-icon>-->
   </div>
 </template>
