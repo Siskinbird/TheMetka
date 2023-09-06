@@ -13,7 +13,7 @@
           aria-describedby="input-live-help input-live-feedback"
           placeholder="Введите название заметки"
           trim
-      ></b-form-input>
+      />
       <b-form-invalid-feedback id="input-live-feedback">
         Название заметки должно состоять из 3х или более букв!
       </b-form-invalid-feedback>
@@ -25,7 +25,7 @@
           placeholder="Введите текст заметки..."
           rows="4"
           max-rows="6"
-      ></b-form-textarea>
+      />
     </div>
     <div class="mt-4 d-flex justify-content-between">
       <b-button @click="reset" variant="danger" class="col-4 col-md-5">Сбросить</b-button>
