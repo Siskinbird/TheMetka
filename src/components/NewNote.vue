@@ -27,10 +27,17 @@
           max-rows="6"
       />
     </div>
-    <div class="mt-4 d-flex justify-content-between">
-      <b-button @click="reset" variant="danger" class="col-4 col-md-5">Сбросить</b-button>
+<!--    <div class="note-priority">-->
 
-      <b-button @click="addNote" variant="success" class="col-4 col-md-5">Сохранить</b-button>
+<!--    </div>-->
+    <div class="mt-4 d-flex justify-content-between">
+      <b-button @click="reset" variant="danger" size="sm" class="col-4 col-md-3">Сбросить</b-button>
+      <b-dropdown text="Приоритет" size="md">
+        <b-dropdown-item @click="note.priority.height = true">Очень важный</b-dropdown-item>
+        <b-dropdown-item @click="note.priority.medium = true">Важный</b-dropdown-item>
+        <b-dropdown-item @click="note.priority.default = true">Обычный</b-dropdown-item>
+      </b-dropdown>
+      <b-button @click="addNote" variant="success" size="sm" class="col-4 col-md-3">Сохранить</b-button>
     </div>
   </div>
 </template>
@@ -50,7 +57,12 @@ export default {
       note: {
         title: '',
         descr: '',
-        nameState: null
+        nameState: null,
+        priority: {
+          default: false,
+          height: false,
+          medium: false
+        }
       }
     }
   },
@@ -62,18 +74,39 @@ export default {
     }
   },
   methods: {
+    // setHeightPriority() {
+    //     this.note.priority.default = false
+    //     this.note.priority.height = true
+    //     this.note.priority.medium = false
+    // },
+    // setMediumPriority() {
+    //   this.note.priority.default = false
+    //       this.note.priority.height = false
+    //       this.note.priority.medium = true
+    // },
+    // setDefaultPriority() {
+    //   this.note.priority.default = true
+    //       this.note.priority.height = false
+    //       this.note.priority.medium = false
+    // },
     reset() {
-      this.note.title = '',
-          this.note.descr = '',
-          this.message = null
+      this.note.title = ''
+      this.note.descr = ''
+      this.message = null
+      this.note.priority = {
+        default: false,
+        height: false,
+        medium: false
+      }
     },
     addNote() {
       if ((this.note.title.length > 2) && (this.note.descr !== '')) {
-        let {title, descr} = this.note
+        let {title, descr, priority} = this.note
         this.$store.dispatch('addNote', {
           id: this.$store.getters.getNotes.length + 1,
           title,
           descr,
+          priority,
           date: new Date(Date.now()).toLocaleString()
         })
         this.reset()
@@ -85,3 +118,6 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+
+</style>

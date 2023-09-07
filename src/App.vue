@@ -25,6 +25,7 @@
       <notes
           :notes="notesFilter"
           :grid="grid"
+          :priority="note.priority"
       />
     </div>
   </div>
@@ -55,7 +56,12 @@ export default {
       note: {
         title: '',
         descr: '',
-        date: new Date(Date.now()).toLocaleString()
+        date: new Date(Date.now()).toLocaleString(),
+        priority: {
+          default: false,
+          height: false,
+          medium: false
+        }
       },
       notes: this.getNotes,
     }

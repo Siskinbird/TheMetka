@@ -2,7 +2,7 @@
   <div class="notes row">
 
     <div class="note col-6 g-4" :class="{'col-12': !grid}" v-for="(note, i) in notes" :key="i">
-      <div class="note-body border border-primary rounded-top rounded-bottom shadow d-flex flex-column justify-content-between">
+      <div :class="{'bg-danger': note.priority.height, 'bg-warning': note.priority.medium, 'bg-light': note.priority.default}" class="note-body border border-primary rounded-top rounded-bottom shadow d-flex flex-column justify-content-between">
         <div class="note-header col-12 border-bottom border-primary bg-primary bg-gradient d-flex align-baseline">
           <div class="note-title col-10">
             <p class="text-light">{{ note.title }}</p>
@@ -36,6 +36,10 @@ export default {
     },
     grid: {
       type: Boolean,
+      required: true
+    },
+    priority: {
+      type: Object,
       required: true
     }
   },
