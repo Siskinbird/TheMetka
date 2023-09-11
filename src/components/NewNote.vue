@@ -30,7 +30,7 @@
 <!--    <div class="note-priority">-->
 
 <!--    </div>-->
-    <div class="mt-4 d-flex justify-content-between">
+    <div class="mt-4 d-flex flex-wrap justify-content-between">
       <b-button @click="reset" variant="danger" size="sm" class="col-4 col-md-3">Сбросить</b-button>
       <b-form-select
           v-model="note.selected"

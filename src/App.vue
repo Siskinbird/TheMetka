@@ -83,6 +83,9 @@ export default {
 $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
 
 //Mine
+body {
+  background-image: url("../src/assets/img/bgnotepaper.jpg");
+}
 #app {
   font-family: $font-family-base;
   -webkit-font-smoothing: antialiased;
@@ -90,6 +93,13 @@ $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.container {
+  //max-width: 1140px ;
+  background-color: #fafafa;
+  max-width: 880px !important;
+  //margin-left: 20px;
+  //margin-right: 20px;
 }
 .grid-ico {
   cursor: pointer;
