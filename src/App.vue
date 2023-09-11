@@ -93,6 +93,13 @@ $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
 }
 .grid-ico {
   cursor: pointer;
+  transition: .3s ease-in-out;
+  &:hover {
+    scale: 113%;
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  }
 }
 
 </style>
