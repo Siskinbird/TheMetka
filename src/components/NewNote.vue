@@ -32,11 +32,19 @@
 <!--    </div>-->
     <div class="mt-4 d-flex justify-content-between">
       <b-button @click="reset" variant="danger" size="sm" class="col-4 col-md-3">Сбросить</b-button>
+      <b-form-select
+          v-model="note.selected"
+          :options="note.options"
+          size="sm"
+          class="mt-3">
+      </b-form-select>
+
       <b-dropdown text="Приоритет" size="md">
         <b-dropdown-item @click="note.priority.height = true">Очень важный</b-dropdown-item>
         <b-dropdown-item @click="note.priority.medium = true">Важный</b-dropdown-item>
         <b-dropdown-item @click="note.priority.default = true">Обычный</b-dropdown-item>
       </b-dropdown>
+
       <b-button @click="addNote" variant="success" size="sm" class="col-4 col-md-3">Сохранить</b-button>
     </div>
   </div>
@@ -44,6 +52,7 @@
 
 <script>
 import message from "@/components/Message";
+import {options} from "axios";
 
 
 
@@ -62,7 +71,14 @@ export default {
           default: false,
           height: false,
           medium: false
-        }
+        },
+        selected: 'A',
+        options: [
+          { value: 'A', text: 'Стандартный'},
+          { value: 'B', text: 'Средний' },
+          { value: 'C', text: 'Высокий' }
+        ]
+
       }
     }
   },
@@ -101,12 +117,13 @@ export default {
     },
     addNote() {
       if ((this.note.title.length > 2) && (this.note.descr !== '')) {
-        let {title, descr, priority} = this.note
+        let {title, descr, priority, selected} = this.note
         this.$store.dispatch('addNote', {
           id: this.$store.getters.getNotes.length + 1,
           title,
           descr,
           priority,
+          selected,
           date: new Date(Date.now()).toLocaleString()
         })
         this.reset()
