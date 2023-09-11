@@ -35,15 +35,16 @@
       <b-form-select
           v-model="note.selected"
           :options="note.options"
-          size="sm"
-          class="mt-3">
+          size="lg"
+          class="rounded"
+          >
       </b-form-select>
 
-      <b-dropdown text="Приоритет" size="md">
-        <b-dropdown-item @click="note.priority.height = true">Очень важный</b-dropdown-item>
-        <b-dropdown-item @click="note.priority.medium = true">Важный</b-dropdown-item>
-        <b-dropdown-item @click="note.priority.default = true">Обычный</b-dropdown-item>
-      </b-dropdown>
+<!--      <b-dropdown text="Приоритет" size="md">-->
+<!--        <b-dropdown-item @click="note.priority.height = true">Очень важный</b-dropdown-item>-->
+<!--        <b-dropdown-item @click="note.priority.medium = true">Важный</b-dropdown-item>-->
+<!--        <b-dropdown-item @click="note.priority.default = true">Обычный</b-dropdown-item>-->
+<!--      </b-dropdown>-->
 
       <b-button @click="addNote" variant="success" size="sm" class="col-4 col-md-3">Сохранить</b-button>
     </div>
