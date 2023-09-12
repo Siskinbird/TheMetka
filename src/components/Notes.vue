@@ -68,8 +68,9 @@ p {
 //  padding: 6px;
 //}
 .note-body {
+  opacity: 0.5;
   min-height: 210px;
-  background-image: url("../assets/img/squared-paper-texture.jpg");
+  //background-image: url("../assets/img/squared-paper-texture.jpg");
 }
 
 .note-remove {
