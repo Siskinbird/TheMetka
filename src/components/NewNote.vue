@@ -30,13 +30,13 @@
 <!--    <div class="note-priority">-->
 
 <!--    </div>-->
-    <div class="mt-4 d-flex flex-wrap justify-content-between">
+    <div class="button-block mt-4 d-flex justify-content-between flex-sm-row">
       <b-button @click="reset" variant="danger" size="sm" class="col-4 col-md-3">Сбросить</b-button>
       <b-form-select
           v-model="note.selected"
           :options="note.options"
           size="lg"
-          class="rounded"
+          class="select rounded mx-sm-2 my-2"
           >
       </b-form-select>
 
@@ -53,7 +53,7 @@
 
 <script>
 import message from "@/components/Message";
-import {options} from "axios";
+
 
 
 
@@ -137,5 +137,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.select {
+  max-width: 160px;
+}
+  //.button-block {
+  //  @include media-breakpoint-down() {
+  //    flex-direction: column;
+  //    justify-content: center;
+  //  }
+  //}
 </style>

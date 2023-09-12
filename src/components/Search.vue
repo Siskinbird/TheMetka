@@ -1,5 +1,5 @@
 <template>
-  <div class="search col-10">
+  <div class="search col-12 col-sm-10">
     <b-form-input type="search" v-model="search" :placeholder="placeholder"/>
   </div>
 </template>
