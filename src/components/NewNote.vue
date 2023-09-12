@@ -31,7 +31,7 @@
 
 <!--    </div>-->
     <div class="button-block mt-4 d-flex justify-content-between flex-column flex-sm-row">
-      <b-button @click="reset" variant="danger" size="sm" class="col-12 col-md-3 col-sm-4">Сбросить</b-button>
+      <b-button @click="reset" variant="danger" size="sm" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>
       <b-form-select
           v-model="note.selected"
           :options="note.options"
@@ -46,7 +46,7 @@
 <!--        <b-dropdown-item @click="note.priority.default = true">Обычный</b-dropdown-item>-->
 <!--      </b-dropdown>-->
 
-      <b-button @click="addNote" variant="success" size="sm" class="col-12 col-md-3 col-sm-4">Сохранить</b-button>
+      <b-button @click="addNote" variant="success" size="sm" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>
     </div>
   </div>
 </template>
@@ -139,6 +139,7 @@ export default {
 <style lang="scss" scoped>
 .select {
   max-width: 100%;
+  min-height: 31px;
 }
   //.button-block {
   //  @include media-breakpoint-down() {

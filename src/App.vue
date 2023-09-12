@@ -97,7 +97,7 @@ body {
   margin-top: 60px;
 }
 .wrapper {
-  max-width: 920px;
+  max-width: 880px;
   margin: 0 auto;
 }
 .container {

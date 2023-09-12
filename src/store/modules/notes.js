@@ -26,7 +26,8 @@ export default {
                     default: true,
                     height: false,
                     medium: false
-                }
+                },
+                selected: 'B'
             },
             {
                 id: 3,
@@ -37,7 +38,8 @@ export default {
                     default: true,
                     height: false,
                     medium: false
-                }
+                },
+                selected: 'A'
             },
             {
                 id: 4,
@@ -60,7 +62,8 @@ export default {
                     default: true,
                     height: false,
                     medium: false
-                }
+                },
+                selected: 'A'
             },
             {
                 id: 6,
@@ -71,7 +74,8 @@ export default {
                     default: false,
                     height: true,
                     medium: false
-                }
+                },
+                selected: 'B'
             },
 
         ]

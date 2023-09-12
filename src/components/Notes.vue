@@ -3,7 +3,7 @@
 
     <div class="note col-12 col-sm-6 g-4 " :class="{'grider': !grid}" v-for="(note, i) in notes" :key="i">
       <div class="note-body border border-primary rounded-top rounded-bottom shadow d-flex flex-column justify-content-between">
-        <div  :class="{'bg-danger': note.selected === 'C', 'bg-warning': note.selected === 'B', 'bg-light': note.selected === 'A'}" class="note-header col-12 border-bottom border-primary rounded-top bg-primary bg-gradient d-flex align-baseline">
+        <div  :class="{'bg-danger': note.selected === 'C', 'bg-warning': note.selected === 'B', 'bg-primary': note.selected === 'A'}" class="note-header col-12 border-bottom border-primary rounded-top bg-primary bg-gradient d-flex align-baseline">
           <div class="note-title col-10">
             <p class="text-light">{{ note.title }}</p>
           </div>
