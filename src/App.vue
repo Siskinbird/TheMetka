@@ -99,6 +99,8 @@ body {
 .wrapper {
   max-width: 880px;
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .container {
   //max-width: 1140px ;

@@ -5,7 +5,7 @@
       <div class="note-body border border-primary rounded-top rounded-bottom shadow d-flex flex-column justify-content-between">
         <div  :class="{'bg-danger': note.selected === 'C', 'bg-warning': note.selected === 'B', 'bg-primary': note.selected === 'A'}" class="note-header col-12 border-bottom border-primary rounded-top bg-primary bg-gradient d-flex align-baseline">
           <div class="note-title col-10">
-            <p class="text-light">{{ note.title }}</p>
+            <p class="text-light ml-30px">{{ note.title }}</p>
           </div>
           <div class="note-remove col-2 d-flex align-items-center justify-content-center">
             <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light" @click="removeNote(i)"/>
@@ -14,7 +14,7 @@
         <div class="note-description">
           <p>{{ note.descr }}</p>
         </div>
-        <div class="note-data">
+        <div class="note-data m-2">
           <span>{{ note.date }}</span>
         </div>
       </div>
@@ -74,6 +74,9 @@ p {
 .note-body {
   min-height: 210px;
   background-image: url("../assets/img/squared-paper-texture.jpg");
+}
+.ml-30px {
+  margin-left: 40px;
 }
 
 .note-remove {
