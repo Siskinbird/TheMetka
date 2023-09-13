@@ -1,22 +1,54 @@
 <template>
   <div class="notes row">
+                            <!------------------------GRID TOGGLE------------------------>
+    <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+      <div class="note-body
+               border
+               border-primary
+               rounded-top
+               rounded-bottom
+               shadow
+               d-flex
+               flex-column
+               justify-content-between"
+      >
 
-    <div class="note col-12 col-sm-6 g-4 " :class="{'grider': !grid}" v-for="(note, i) in notes" :key="i">
-      <div class="note-body border border-primary rounded-top rounded-bottom shadow d-flex flex-column justify-content-between">
-        <div  :class="{'bg-danger': note.selected === 'C', 'bg-warning': note.selected === 'B', 'bg-primary': note.selected === 'A'}" class="note-header col-12 border-bottom border-primary rounded-top bg-primary bg-gradient d-flex align-baseline">
+                              <!------------------------PRIORITY CLASS TOGGLE------------------------>
+        <div :class="{ 'bg-danger': note.selected === 'C', 'bg-warning': note.selected === 'B', 'bg-primary': note.selected === 'A' }"
+             class=
+                 "note-header
+                  col-12
+                  border-bottom
+                  border-primary
+                  rounded-top
+                  bg-primary
+                  bg-gradient
+                  d-flex
+                  align-baseline"
+        >
+
+                        <!---------------------------NOTE TITLE--------------------------->
           <div class="note-title col-10">
-            <p class="text-light ml-30px">{{ note.title }}</p>
+            <p class="text-light ml-40px" @click="showInput(i)">{{ note.title }}</p>
+
           </div>
+
+                      <!---------------------------REMOVE NOTE------------------------------->
           <div class="note-remove col-2 d-flex align-items-center justify-content-center">
             <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light" @click="removeNote(i)"/>
           </div>
         </div>
+
+                      <!------------------------NOTE DESCRIPTION----------------------------->
         <div class="note-description">
           <p>{{ note.descr }}</p>
         </div>
+
+                          <!------------------------NOTE DATE------------------------>
         <div class="note-data m-2">
           <span>{{ note.date }}</span>
         </div>
+
       </div>
     </div>
   </div>
@@ -24,9 +56,6 @@
 
 
 <script>
-import {mapActions, mapGetters} from "vuex";
-import search from "@/components/Search";
-
 
 export default {
   props: {
@@ -48,12 +77,15 @@ export default {
       console.log('Note id is ' + this.notes[i].id);
       this.$store.dispatch("removeNote", i)
     },
-    fetchPosts() {
-      this.$store.dispatch('fetchPosts')
-    },
-    getNoteIndex(i) {
-      console.log(`${this.notes[i].id}`);
+    showInput(i) {
+      console.log(this.notes[i].title);
     }
+    // fetchPosts() {
+    //   this.$store.dispatch('fetchPosts')
+    // },
+    // getNoteIndex(i) {
+    //   console.log(`${this.notes[i].id}`);
+    // }
   }
 }
 
@@ -64,18 +96,17 @@ p {
   padding: 8px;
   margin: 0;
 }
-.grider {
+.grid {
   flex: 0 0 auto;
   width: 100%;
 }
-//.note {
-//  padding: 6px;
-//}
+
 .note-body {
   min-height: 210px;
   background-image: url("../assets/img/squared-paper-texture.jpg");
 }
-.ml-30px {
+
+.ml-40px {
   margin-left: 40px;
 }
 
