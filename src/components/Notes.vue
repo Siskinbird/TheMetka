@@ -29,8 +29,10 @@
 
                         <!---------------------------NOTE TITLE--------------------------->
           <div class="note-title col-10">
-            <p class="text-light ml-40px" @click="showInput(i)">{{ note.title }}</p>
+            <p id="bue" class="text-light ml-40px d-block" v-if="!notes[i].isEdit" @click="editNoteTitle(i)">{{ note.title }}</p>
 
+                    <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
+            <b-input id="hi" ref="myInput" v-on:blur="editNoteTitle(i)" v-model="note.title" :value="note.title" v-if="notes[i].isEdit" @keydown.enter="notes[i].isEdit = false"/>
           </div>
 
                       <!---------------------------REMOVE NOTE------------------------------->
@@ -66,20 +68,31 @@ export default {
     grid: {
       type: Boolean,
       required: true
-    },
-    priority: {
-      type: Object,
-      required: true
     }
   },
   methods: {
+    // foc() {
+    //   document.getElementById('hi').focus()
+    //   //this.$refs.myInput.focus();
+    // },
     removeNote(i) {
       console.log('Note id is ' + this.notes[i].id);
       this.$store.dispatch("removeNote", i)
     },
-    showInput(i) {
+    editNoteTitle(i) {
       console.log(this.notes[i].title);
-    }
+      let bue = document.getElementById('bue')
+      let test =  document.getElementById('hi')
+     bue.addEventListener('click', function () {
+       setTimeout(test.focus, 1000)
+     })
+      this.$store.dispatch('editNoteTitle', i)
+    },
+    // test(i) {
+    //   this.editNoteTitle(i)
+    //   this.foc();
+    // },
+
     // fetchPosts() {
     //   this.$store.dispatch('fetchPosts')
     // },

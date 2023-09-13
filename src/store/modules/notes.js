@@ -15,7 +15,8 @@ export default {
                     height: false,
                     medium: true
                 },
-                selected: 'C'
+                selected: 'C',
+                isEdit: false
             },
             {
                 id: 2,
@@ -27,7 +28,8 @@ export default {
                     height: false,
                     medium: false
                 },
-                selected: 'B'
+                selected: 'B',
+                isEdit: false
             },
             {
                 id: 3,
@@ -39,7 +41,8 @@ export default {
                     height: false,
                     medium: false
                 },
-                selected: 'A'
+                selected: 'A',
+                isEdit: false
             },
             {
                 id: 4,
@@ -51,7 +54,8 @@ export default {
                     height: false,
                     medium: false
                 },
-                selected: 'B'
+                selected: 'B',
+                isEdit: false
             },
             {
                 id: 5,
@@ -63,7 +67,8 @@ export default {
                     height: false,
                     medium: false
                 },
-                selected: 'A'
+                selected: 'A',
+                isEdit: false
             },
             {
                 id: 6,
@@ -75,7 +80,8 @@ export default {
                     height: true,
                     medium: false
                 },
-                selected: 'B'
+                selected: 'B',
+                isEdit: false
             },
 
         ]
@@ -98,14 +104,14 @@ export default {
                 return array;
             }
         },
-        getPosts(state) {
-            return state.posts
-        }
     },
     mutations: {
         // setNotes(state, filterNotes) {
         //     state.notes.push(filterNotes)
         // },
+        editNoteTitle(state, index) {
+          state.notes[index].isEdit = !state.notes[index].isEdit;
+        },
         addNote(state, newNote) {
             state.notes.push(newNote)
         },
@@ -120,6 +126,9 @@ export default {
         // setNotes({commit}, payload) {
         //   commit('setNotes', payload)
         // },
+        editNoteTitle({commit}, payload) {
+          commit('editNoteTitle', payload)
+        },
         addNote({commit}, payload) {
             commit('addNote', payload)
         },
