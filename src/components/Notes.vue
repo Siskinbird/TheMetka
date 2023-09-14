@@ -30,20 +30,19 @@
                         <!---------------------------NOTE TITLE--------------------------->
           <div class="note-title col-10">
             <p id="paragraph"
-               class="text-light ml-40px d-block"
-               v-on:focus="editNoteTitle(i)"
+               class="text-light ml-40px"
                v-if="!notes[i].isEdit"
                @click="editNoteTitle(i)">{{ note.title }}
             </p>
 
                     <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
-            <b-input id="hiddenInput"
-                     v-on:blur="notes[i].isEdit = false"
+            <b-input v-on:blur="notes[i].isEdit = false"
                      v-model="note.title"
                      :value="note.title"
                      v-if="notes[i].isEdit"
                      @keydown.enter="notes[i].isEdit = false"
                      @keydown.esc="notes[i].isEdit = false"
+                     autofocus
             />
           </div>
 
@@ -72,6 +71,11 @@
 <script>
 
 export default {
+  data() {
+    return {
+      oldTitle: this.value
+    }
+  },
   props: {
     notes: {
       type: Array,
@@ -83,23 +87,22 @@ export default {
     }
   },
   methods: {
-    // foc() {
-    //   document.getElementById('hi').focus()
-    //   //this.$refs.myInput.focus();
-    // },
     removeNote(i) {
       console.log('Note id is ' + this.notes[i].id);
       this.$store.dispatch("removeNote", i)
     },
     editNoteTitle(i) {
-       console.log(this.notes[i].title);
-     //  let bue = document.getElementById('paragraph')
-     //  let test =  document.getElementById('hiddenInput')
-     //  bue.addEventListener('click', () => {
-     //   test.focus()
-     // })
+      console.log(this.notes[i].title);
       this.$store.dispatch('editNoteTitle', i)
     },
+    // returnTitle(i) {
+    //   this.oldTitle = this.notes[i].title
+    //   this.notes[i].isEdit = false
+    // }
+      // let oldTitle = this.$store.state.notes.note.title
+      // this.notes[i].note.title = oldTitle
+      // this.notes[i].note.isEdit = false
+    }
     // returnOldTitle(i) {
     //   this.notes[i].title = this.$store.state.notes[i].title;
     //   this.notes[i].isEdit = false
@@ -115,7 +118,6 @@ export default {
     // getNoteIndex(i) {
     //   console.log(`${this.notes[i].id}`);
     // }
-  }
 }
 
 </script>

@@ -3,36 +3,35 @@ import axios from "axios";
 export default {
     //Initial state
     state: {
-        posts: [],
-        notes: [
+         notes: [
             {
                 id: 1,
-                title: 'Интересно...',
-                descr: 'Как выровнять блок по центру контейнера?',
+                title: 'Рыба...',
+                descr: 'Как выровнять блок по центру контейнера? И не отхватить леща от тим лида?',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Height',
                 isEdit: false
             },
             {
                 id: 2,
-                title: 'Русский',
-                descr: 'По русски читать гораздо проще , чем на не русском',
+                title: 'Оладышки',
+                descr: 'Это что то на вкусном, но варить я их конечно же не буду!',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Medium',
                 isEdit: false
             },
             {
                 id: 3,
-                title: 'Будет так',
-                descr: 'Только так как ты захочешь, не иначе',
+                title: 'Меладзе',
+                descr: 'Один из самых страшных кошмаров, это забыть его тексты.',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Default',
                 isEdit: false
             },
             {
                 id: 4,
-                title: 'Интересные факты',
-                descr: 'Если долго заниматься, что то да получится',
+                title: 'Факт дня',
+                descr: 'Правильно сформулированный вопрос, содержит в себе половину ответа.',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Medium',
                 isEdit: false
@@ -47,13 +46,12 @@ export default {
             },
             {
                 id: 6,
-                title: 'Вспоминая начало',
+                title: 'Вперёд!',
                 descr: 'Видно что прогресс есть,и он продолжает идти вперед!',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Medium',
                 isEdit: false
             },
-
         ]
     },
     getters: {
