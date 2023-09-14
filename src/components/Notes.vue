@@ -29,10 +29,18 @@
 
                         <!---------------------------NOTE TITLE--------------------------->
           <div class="note-title col-10">
-            <p id="bue" class="text-light ml-40px d-block" v-if="!notes[i].isEdit" @click="editNoteTitle(i)">{{ note.title }}</p>
+            <p id="paragraph" class="text-light ml-40px d-block" v-on:focus="editNoteTitle(i)" v-if="!notes[i].isEdit" @click="editNoteTitle(i)">{{ note.title }}</p>
 
                     <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
-            <b-input id="hi" ref="myInput" v-on:blur="editNoteTitle(i)" v-model="note.title" :value="note.title" v-if="notes[i].isEdit" @keydown.enter="notes[i].isEdit = false"/>
+            <b-input id="hiddenInput"
+                     v-on:blur="notes[i].isEdit = false"
+                     v-model="note.title"
+                     :value="note.title"
+                     v-if="notes[i].isEdit"
+                     @keydown.enter="notes[i].isEdit = false"
+                     @keydown.esc="notes[i].isEdit = false"
+
+            />
           </div>
 
                       <!---------------------------REMOVE NOTE------------------------------->
@@ -81,13 +89,17 @@ export default {
     },
     editNoteTitle(i) {
       console.log(this.notes[i].title);
-      let bue = document.getElementById('bue')
-      let test =  document.getElementById('hi')
-     bue.addEventListener('click', function () {
-       setTimeout(test.focus, 1000)
+      let bue = document.getElementById('paragraph')
+      let test =  document.getElementById('hiddenInput')
+      bue.addEventListener('click', () => {
+       test.focus()
      })
       this.$store.dispatch('editNoteTitle', i)
     },
+    // returnOldTitle(i) {
+    //   this.notes[i].title = this.$store.state.notes[i].title;
+    //   this.notes[i].isEdit = false
+    // }
     // test(i) {
     //   this.editNoteTitle(i)
     //   this.foc();

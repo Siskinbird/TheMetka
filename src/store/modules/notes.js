@@ -106,9 +106,6 @@ export default {
         },
     },
     mutations: {
-        // setNotes(state, filterNotes) {
-        //     state.notes.push(filterNotes)
-        // },
         editNoteTitle(state, index) {
           state.notes[index].isEdit = !state.notes[index].isEdit;
         },
@@ -123,9 +120,6 @@ export default {
         }
     },
     actions: {
-        // setNotes({commit}, payload) {
-        //   commit('setNotes', payload)
-        // },
         editNoteTitle({commit}, payload) {
           commit('editNoteTitle', payload)
         },
@@ -147,8 +141,5 @@ export default {
                     return error
                 })
         }
-        // resetNote({commit}, payload) {
-        //     commit('resetNote', payload)
-        // }
     }
 }
