@@ -14,7 +14,7 @@
       >
 
                               <!------------------------PRIORITY CLASS TOGGLE------------------------>
-        <div :class="{ 'bg-danger': note.selected === 'C', 'bg-warning': note.selected === 'B', 'bg-primary': note.selected === 'A' }"
+        <div :class="{ 'bg-danger': note.priority === 'Height', 'bg-warning': note.priority === 'Medium', 'bg-primary': note.priority === 'Default' }"
              class=
                  "note-header
                   col-12
@@ -29,7 +29,12 @@
 
                         <!---------------------------NOTE TITLE--------------------------->
           <div class="note-title col-10">
-            <p id="paragraph" class="text-light ml-40px d-block" v-on:focus="editNoteTitle(i)" v-if="!notes[i].isEdit" @click="editNoteTitle(i)">{{ note.title }}</p>
+            <p id="paragraph"
+               class="text-light ml-40px d-block"
+               v-on:focus="editNoteTitle(i)"
+               v-if="!notes[i].isEdit"
+               @click="editNoteTitle(i)">{{ note.title }}
+            </p>
 
                     <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
             <b-input id="hiddenInput"
@@ -39,7 +44,6 @@
                      v-if="notes[i].isEdit"
                      @keydown.enter="notes[i].isEdit = false"
                      @keydown.esc="notes[i].isEdit = false"
-
             />
           </div>
 
@@ -88,12 +92,12 @@ export default {
       this.$store.dispatch("removeNote", i)
     },
     editNoteTitle(i) {
-      console.log(this.notes[i].title);
-      let bue = document.getElementById('paragraph')
-      let test =  document.getElementById('hiddenInput')
-      bue.addEventListener('click', () => {
-       test.focus()
-     })
+       console.log(this.notes[i].title);
+     //  let bue = document.getElementById('paragraph')
+     //  let test =  document.getElementById('hiddenInput')
+     //  bue.addEventListener('click', () => {
+     //   test.focus()
+     // })
       this.$store.dispatch('editNoteTitle', i)
     },
     // returnOldTitle(i) {

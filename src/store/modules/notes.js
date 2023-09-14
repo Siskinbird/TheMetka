@@ -10,12 +10,7 @@ export default {
                 title: 'Интересно...',
                 descr: 'Как выровнять блок по центру контейнера?',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: false,
-                    height: false,
-                    medium: true
-                },
-                selected: 'C',
+                priority: 'Height',
                 isEdit: false
             },
             {
@@ -23,12 +18,7 @@ export default {
                 title: 'Русский',
                 descr: 'По русски читать гораздо проще , чем на не русском',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'B',
+                priority: 'Medium',
                 isEdit: false
             },
             {
@@ -36,12 +26,7 @@ export default {
                 title: 'Будет так',
                 descr: 'Только так как ты захочешь, не иначе',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'A',
+                priority: 'Default',
                 isEdit: false
             },
             {
@@ -49,12 +34,7 @@ export default {
                 title: 'Интересные факты',
                 descr: 'Если долго заниматься, что то да получится',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'B',
+                priority: 'Medium',
                 isEdit: false
             },
             {
@@ -62,12 +42,7 @@ export default {
                 title: 'Тестовая',
                 descr: 'Интересно, сколько ещё нужно времени, для того что бы заработало',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'A',
+                priority: 'Default',
                 isEdit: false
             },
             {
@@ -75,12 +50,7 @@ export default {
                 title: 'Вспоминая начало',
                 descr: 'Видно что прогресс есть,и он продолжает идти вперед!',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: false,
-                    height: true,
-                    medium: false
-                },
-                selected: 'B',
+                priority: 'Medium',
                 isEdit: false
             },
 
