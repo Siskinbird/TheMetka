@@ -41,7 +41,7 @@
                      :value="note.title"
                      v-if="notes[i].isEdit"
                      @keydown.enter="notes[i].isEdit = false"
-                     @keydown.esc="notes[i].isEdit = false"
+                     @keydown.esc="returnTitle(i)"
                      autofocus
             />
           </div>
@@ -69,13 +69,8 @@
 
 
 <script>
-
+import { mapGetters, mapActions } from "vuex";
 export default {
-  data() {
-    return {
-      oldTitle: this.value
-    }
-  },
   props: {
     notes: {
       type: Array,
@@ -92,17 +87,23 @@ export default {
       this.$store.dispatch("removeNote", i)
     },
     editNoteTitle(i) {
-      console.log(this.notes[i].title);
-      this.$store.dispatch('editNoteTitle', i)
+        this.$store.dispatch('editNoteTitle', i)
+      //console.log(this.notes[i].title);
     },
-    // returnTitle(i) {
-    //   this.oldTitle = this.notes[i].title
-    //   this.notes[i].isEdit = false
-    // }
+    returnTitle(i) {
+      this.notes[i].oldTitle = this.notes[i].title
+      console.log(this.notes[i].oldTitle)
+    }
+
       // let oldTitle = this.$store.state.notes.note.title
       // this.notes[i].note.title = oldTitle
       // this.notes[i].note.isEdit = false
-    }
+    },
+
+    // ...mapGetters(['getNotes']),
+    // ...mapActions(['removeNote', "editNoteTitle"]),
+
+
     // returnOldTitle(i) {
     //   this.notes[i].title = this.$store.state.notes[i].title;
     //   this.notes[i].isEdit = false
