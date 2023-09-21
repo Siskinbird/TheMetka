@@ -25,7 +25,7 @@ export default {
             {
                 id: 3,
                 title: 'Меладзе',
-                newTitle: '',
+                newTitle: 'Меладзе',
                 descr: 'Один из самых страшных кошмаров, это забыть его тексты.',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Default',
@@ -34,6 +34,7 @@ export default {
             {
                 id: 4,
                 title: 'Факт дня',
+                newTitle: 'Факт дня',
                 descr: 'Правильно сформулированный вопрос, содержит в себе половину ответа.',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Medium',
@@ -42,7 +43,7 @@ export default {
             {
                 id: 5,
                 title: 'Тестовая',
-                newTitle: '',
+                newTitle: 'Тестовая',
                 descr: 'Интересно, сколько ещё нужно времени, для того что бы заработало',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Default',
@@ -51,7 +52,7 @@ export default {
             {
                 id: 6,
                 title: 'Вперёд!',
-                newTitle: '',
+                newTitle: 'Вперёд',
                 descr: 'Видно что прогресс есть,и он продолжает идти вперед!',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Medium',
@@ -101,9 +102,9 @@ export default {
         },
     },
     actions: {
-        // saveNewTitle({commit}, payload) {
-        //     commit('saveNewTitle', payload)
-        // },
+        saveNewTitle({commit}, payload) {
+            commit('saveNewTitle', payload)
+        },
         // loadTitle({commit}, payload) {
         //   commit('loadTitle', payload)
         // },

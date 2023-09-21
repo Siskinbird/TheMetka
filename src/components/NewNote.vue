@@ -86,34 +86,22 @@ export default {
     }
   },
   methods: {
-    // setHeightPriority() {
-    //     this.note.priority.default = false
-    //     this.note.priority.height = true
-    //     this.note.priority.medium = false
-    // },
-    // setMediumPriority() {
-    //   this.note.priority.default = false
-    //       this.note.priority.height = false
-    //       this.note.priority.medium = true
-    // },
-    // setDefaultPriority() {
-    //   this.note.priority.default = true
-    //       this.note.priority.height = false
-    //       this.note.priority.medium = false
-    // },
     reset() {
       this.note.title = ''
       this.note.descr = ''
       this.message = null
+      this.note.isEdit = false
       this.note.priority = 'Default'
     },
     addNote() {
       if ((this.note.title.length > 2) && (this.note.descr !== '')) {
-        let {title, descr, priority} = this.note
+        let {title, descr, priority } = this.note
         this.$store.dispatch('addNote', {
           id: this.$store.getters.getNotes.length + 1,
           title,
+          newTitle: title,
           descr,
+          isEdit: false,
           priority,
           date: new Date(Date.now()).toLocaleString()
         })
