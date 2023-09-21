@@ -30,6 +30,7 @@
                         <!---------------------------NOTE TITLE--------------------------->
           <div class="note-title col-10">
             <p id="paragraph"
+               role='button'
                class="text-light ml-40px"
                v-if="!notes[i].isEdit"
                @click="editNoteTitle(i)">{{ note.title }}
@@ -114,6 +115,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.note {
+  transition: .3s ease-in-out;
+  &:hover {
+    scale: 102%;
+  }
+}
 p {
   padding: 8px;
   margin: 0;
