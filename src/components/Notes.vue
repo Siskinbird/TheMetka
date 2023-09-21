@@ -38,10 +38,9 @@
                     <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
             <b-input v-on:blur="notes[i].isEdit = false"
                      v-model="note.title"
-                     :value="note.title"
                      v-if="notes[i].isEdit"
-                     @keydown.enter="notes[i].isEdit = false"
-                     @keydown.esc="returnTitle(i)"
+                     @keydown.enter="saveNewTitle(i)"
+                     @keydown.esc="loadTitle(i)"
                      autofocus
             />
           </div>
@@ -69,8 +68,12 @@
 
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import {mapGetters, mapActions, mapMutations} from "vuex";
+
 export default {
+  data() {
+    return {}
+  },
   props: {
     notes: {
       type: Array,
@@ -87,38 +90,25 @@ export default {
       this.$store.dispatch("removeNote", i)
     },
     editNoteTitle(i) {
-        this.$store.dispatch('editNoteTitle', i)
-      //console.log(this.notes[i].title);
+      this.$store.dispatch('editNoteTitle', i)
     },
-    returnTitle(i) {
-      this.notes[i].oldTitle = this.notes[i].title
-      console.log(this.notes[i].oldTitle)
-    }
-
-      // let oldTitle = this.$store.state.notes.note.title
-      // this.notes[i].note.title = oldTitle
-      // this.notes[i].note.isEdit = false
+    saveNewTitle(i) {
+      let temporary = []
+      temporary.push(this.notes[i].title)
+      this.notes[i].newTitle = this.notes[i].title
+      this.notes[i].date = new Date(Date.now()).toLocaleString()
+      this.notes[i].isEdit = false
+      // this.$store.dispatch('saveNewTitle', i);
     },
-
-    // ...mapGetters(['getNotes']),
-    // ...mapActions(['removeNote', "editNoteTitle"]),
-
-
-    // returnOldTitle(i) {
-    //   this.notes[i].title = this.$store.state.notes[i].title;
-    //   this.notes[i].isEdit = false
-    // }
-    // test(i) {
-    //   this.editNoteTitle(i)
-    //   this.foc();
-    // },
-
-    // fetchPosts() {
-    //   this.$store.dispatch('fetchPosts')
-    // },
-    // getNoteIndex(i) {
-    //   console.log(`${this.notes[i].id}`);
-    // }
+    loadTitle(i) {
+      let temporary = []
+      temporary.push(this.notes[i].newTitle)
+      if (temporary !== this.notes[i].title) {
+        this.notes[i].title = this.notes[i].newTitle
+      }
+      this.notes[i].isEdit = false
+    },
+  },
 }
 
 </script>

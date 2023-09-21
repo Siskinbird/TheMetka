@@ -35,7 +35,6 @@
       <b-form-select
           v-model="note.priority"
           :options="note.options"
-          size="lg"
           class="select rounded mx-sm-2"
           >
       </b-form-select>
@@ -66,6 +65,7 @@ export default {
       message: null,
       note: {
         title: '',
+        newTitle: '',
         descr: '',
         nameState: null,
         priority: 'Default',

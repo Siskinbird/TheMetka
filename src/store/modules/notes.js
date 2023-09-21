@@ -7,6 +7,7 @@ export default {
             {
                 id: 1,
                 title: 'Рыба...',
+                newTitle: 'Рыба...',
                 descr: 'Как выровнять блок по центру контейнера? И не отхватить леща от тим лида?',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Height',
@@ -15,6 +16,7 @@ export default {
             {
                 id: 2,
                 title: 'Оладышки',
+                newTitle: 'Оладышки',
                 descr: 'Это что то на вкусном, но варить я их конечно же не буду!',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Medium',
@@ -23,6 +25,7 @@ export default {
             {
                 id: 3,
                 title: 'Меладзе',
+                newTitle: '',
                 descr: 'Один из самых страшных кошмаров, это забыть его тексты.',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Default',
@@ -39,6 +42,7 @@ export default {
             {
                 id: 5,
                 title: 'Тестовая',
+                newTitle: '',
                 descr: 'Интересно, сколько ещё нужно времени, для того что бы заработало',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Default',
@@ -47,6 +51,7 @@ export default {
             {
                 id: 6,
                 title: 'Вперёд!',
+                newTitle: '',
                 descr: 'Видно что прогресс есть,и он продолжает идти вперед!',
                 date: new Date(Date.now()).toLocaleString(),
                 priority: 'Medium',
@@ -74,6 +79,17 @@ export default {
         },
     },
     mutations: {
+        // saveNewTitle(state, index) {
+        //     state.notes[index].newTitle = state.notes[index].title
+        //     this.notes[index].isEdit = false
+        // },
+        // loadTitle(state, index) {
+        //     let temporary = [];
+        //     temporary.push(state.notes[index].newTitle)
+        //     console.log(temporary);
+        //     this.notes[index].title = temporary
+        //     console.log(this.notes[index].title);
+        // },
         editNoteTitle(state, index) {
           state.notes[index].isEdit = !state.notes[index].isEdit;
         },
@@ -83,11 +99,14 @@ export default {
         removeNote(state, index) {
             state.notes.splice(index, 1)
         },
-        fetchPosts(state, posts) {
-            state.posts = posts;
-        }
     },
     actions: {
+        // saveNewTitle({commit}, payload) {
+        //     commit('saveNewTitle', payload)
+        // },
+        // loadTitle({commit}, payload) {
+        //   commit('loadTitle', payload)
+        // },
         editNoteTitle({commit}, payload) {
           commit('editNoteTitle', payload)
         },
@@ -96,18 +115,6 @@ export default {
         },
         removeNote({commit}, payload) {
             commit('removeNote', payload)
-        },
-        fetchPosts({commit}) {
-            return axios.get('https://jsonplaceholder.typicode.com/posts?limit10')
-                .then((posts) => {
-                    commit('fetchPosts', posts.data)
-                    console.log(posts.data);
-                    return posts
-                })
-                .catch((error) => {
-                    console.log(error);
-                    return error
-                })
         }
     }
 }
