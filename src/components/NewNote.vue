@@ -52,6 +52,7 @@
 
 <script>
 import message from "@/components/Message";
+import notes from "@/store/modules/notes";
 
 
 
@@ -63,6 +64,7 @@ export default {
   data() {
     return {
       message: null,
+      notes: localStorage.getItem('notes'),
       note: {
         title: '',
         newTitle: '',
@@ -105,6 +107,11 @@ export default {
           priority,
           date: new Date(Date.now()).toLocaleString()
         })
+        // localStorage.setItem('note', JSON.stringify(this.note))
+        //
+        //
+        // this.notes.push(localStorage.getItem('notes'))
+        // console.log(notes);
         this.reset()
       } else {
         this.message = 'Title can`t be empty'
