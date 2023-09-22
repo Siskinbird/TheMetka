@@ -3,81 +3,61 @@ import axios from "axios";
 export default {
     //Initial state
     state: {
-        posts: [],
-        notes: [
+         notes: [
             {
                 id: 1,
-                title: 'Интересно...',
-                descr: 'Как выровнять блок по центру контейнера?',
+                title: 'Рыба...',
+                newTitle: 'Рыба...',
+                descr: 'Как выровнять блок по центру контейнера? И не отхватить леща от тим лида?',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: false,
-                    height: false,
-                    medium: true
-                },
-                selected: 'C'
+                priority: 'Height',
+                isEdit: false
             },
             {
                 id: 2,
-                title: 'Русский',
-                descr: 'По русски читать гораздо проще , чем на не русском',
+                title: 'Оладышки',
+                newTitle: 'Оладышки',
+                descr: 'Это что то на вкусном, но варить я их конечно же не буду!',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'B'
+                priority: 'Medium',
+                isEdit: false
             },
             {
                 id: 3,
-                title: 'Будет так',
-                descr: 'Только так как ты захочешь, не иначе',
+                title: 'Меладзе',
+                newTitle: 'Меладзе',
+                descr: 'Один из самых страшных кошмаров, это забыть его тексты.',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'A'
+                priority: 'Default',
+                isEdit: false
             },
             {
                 id: 4,
-                title: 'Интересные факты',
-                descr: 'Если долго заниматься, что то да получится',
+                title: 'Факт дня',
+                newTitle: 'Факт дня',
+                descr: 'Правильно сформулированный вопрос, содержит в себе половину ответа.',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'B'
+                priority: 'Medium',
+                isEdit: false
             },
             {
                 id: 5,
                 title: 'Тестовая',
+                newTitle: 'Тестовая',
                 descr: 'Интересно, сколько ещё нужно времени, для того что бы заработало',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: true,
-                    height: false,
-                    medium: false
-                },
-                selected: 'A'
+                priority: 'Default',
+                isEdit: false
             },
             {
                 id: 6,
-                title: 'Вспоминая начало',
+                title: 'Вперёд!',
+                newTitle: 'Вперёд',
                 descr: 'Видно что прогресс есть,и он продолжает идти вперед!',
                 date: new Date(Date.now()).toLocaleString(),
-                priority: {
-                    default: false,
-                    height: true,
-                    medium: false
-                },
-                selected: 'B'
+                priority: 'Medium',
+                isEdit: false
             },
-
         ]
     },
     getters: {
@@ -98,48 +78,44 @@ export default {
                 return array;
             }
         },
-        getPosts(state) {
-            return state.posts
-        }
     },
     mutations: {
-        // setNotes(state, filterNotes) {
-        //     state.notes.push(filterNotes)
+        // saveNewTitle(state, index) {
+        //     state.notes[index].newTitle = state.notes[index].title
+        //     this.notes[index].isEdit = false
         // },
+        // loadTitle(state, index) {
+        //     let temporary = [];
+        //     temporary.push(state.notes[index].newTitle)
+        //     console.log(temporary);
+        //     this.notes[index].title = temporary
+        //     console.log(this.notes[index].title);
+        // },
+        editNoteTitle(state, index) {
+          state.notes[index].isEdit = !state.notes[index].isEdit;
+        },
         addNote(state, newNote) {
             state.notes.push(newNote)
         },
         removeNote(state, index) {
             state.notes.splice(index, 1)
         },
-        fetchPosts(state, posts) {
-            state.posts = posts;
-        }
     },
     actions: {
-        // setNotes({commit}, payload) {
-        //   commit('setNotes', payload)
+        saveNewTitle({commit}, payload) {
+            commit('saveNewTitle', payload)
+        },
+        // loadTitle({commit}, payload) {
+        //   commit('loadTitle', payload)
         // },
+        editNoteTitle({commit}, payload) {
+          commit('editNoteTitle', payload)
+        },
         addNote({commit}, payload) {
             commit('addNote', payload)
         },
         removeNote({commit}, payload) {
             commit('removeNote', payload)
-        },
-        fetchPosts({commit}) {
-            return axios.get('https://jsonplaceholder.typicode.com/posts?limit10')
-                .then((posts) => {
-                    commit('fetchPosts', posts.data)
-                    console.log(posts.data);
-                    return posts
-                })
-                .catch((error) => {
-                    console.log(error);
-                    return error
-                })
         }
-        // resetNote({commit}, payload) {
-        //     commit('resetNote', payload)
-        // }
     }
 }

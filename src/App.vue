@@ -57,6 +57,7 @@ export default {
       grid: true,
       note: {
         title: '',
+        newTitle: '',
         descr: '',
         date: new Date(Date.now()).toLocaleString(),
         priority: {

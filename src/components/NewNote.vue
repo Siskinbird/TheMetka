@@ -33,9 +33,8 @@
     <div class="button-block mt-4 d-flex justify-content-between flex-column flex-sm-row">
       <b-button @click="reset" variant="danger" size="sm" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>
       <b-form-select
-          v-model="note.selected"
+          v-model="note.priority"
           :options="note.options"
-          size="lg"
           class="select rounded mx-sm-2"
           >
       </b-form-select>
@@ -53,6 +52,7 @@
 
 <script>
 import message from "@/components/Message";
+import notes from "@/store/modules/notes";
 
 
 
@@ -64,20 +64,17 @@ export default {
   data() {
     return {
       message: null,
+      notes: localStorage.getItem('notes'),
       note: {
         title: '',
+        newTitle: '',
         descr: '',
         nameState: null,
-        priority: {
-          default: false,
-          height: false,
-          medium: false
-        },
-        selected: 'A',
+        priority: 'Default',
         options: [
-          { value: 'A', text: 'Стандартный'},
-          { value: 'B', text: 'Средний' },
-          { value: 'C', text: 'Высокий' }
+          { value: 'Default', text: 'Стандартный'},
+          { value: 'Medium', text: 'Средний' },
+          { value: 'Height', text: 'Высокий' }
         ]
 
       }
@@ -91,42 +88,30 @@ export default {
     }
   },
   methods: {
-    // setHeightPriority() {
-    //     this.note.priority.default = false
-    //     this.note.priority.height = true
-    //     this.note.priority.medium = false
-    // },
-    // setMediumPriority() {
-    //   this.note.priority.default = false
-    //       this.note.priority.height = false
-    //       this.note.priority.medium = true
-    // },
-    // setDefaultPriority() {
-    //   this.note.priority.default = true
-    //       this.note.priority.height = false
-    //       this.note.priority.medium = false
-    // },
     reset() {
       this.note.title = ''
       this.note.descr = ''
       this.message = null
-      this.note.priority = {
-        default: false,
-        height: false,
-        medium: false
-      }
+      this.note.isEdit = false
+      this.note.priority = 'Default'
     },
     addNote() {
       if ((this.note.title.length > 2) && (this.note.descr !== '')) {
-        let {title, descr, priority, selected} = this.note
+        let {title, descr, priority } = this.note
         this.$store.dispatch('addNote', {
           id: this.$store.getters.getNotes.length + 1,
           title,
+          newTitle: title,
           descr,
+          isEdit: false,
           priority,
-          selected,
           date: new Date(Date.now()).toLocaleString()
         })
+        // localStorage.setItem('note', JSON.stringify(this.note))
+        //
+        //
+        // this.notes.push(localStorage.getItem('notes'))
+        // console.log(notes);
         this.reset()
       } else {
         this.message = 'Title can`t be empty'

@@ -1,7 +1,7 @@
 <template>
   <div class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
-    <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+    <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in test" :key="i">
       <div class="note-body
                border
                border-primary
@@ -14,7 +14,7 @@
       >
 
                               <!------------------------PRIORITY CLASS TOGGLE------------------------>
-        <div :class="{ 'bg-danger': note.selected === 'C', 'bg-warning': note.selected === 'B', 'bg-primary': note.selected === 'A' }"
+        <div :class="{ 'bg-danger': note.priority === 'Height', 'bg-warning': note.priority === 'Medium', 'bg-primary': note.priority === 'Default' }"
              class=
                  "note-header
                   col-12
@@ -29,8 +29,21 @@
 
                         <!---------------------------NOTE TITLE--------------------------->
           <div class="note-title col-10">
-            <p class="text-light ml-40px" @click="showInput(i)">{{ note.title }}</p>
+            <p id="paragraph"
+               role='button'
+               class="text-light ml-40px"
+               v-if="!notes[i].isEdit"
+               @click="editNoteTitle(i)">{{ note.title }}
+            </p>
 
+                    <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
+            <b-input v-on:blur="notes[i].isEdit = false"
+                     v-model="note.title"
+                     v-if="notes[i].isEdit"
+                     @keydown.enter="saveNewTitle(i)"
+                     @keydown.esc="loadTitle(i)"
+                     autofocus
+            />
           </div>
 
                       <!---------------------------REMOVE NOTE------------------------------->
@@ -56,8 +69,14 @@
 
 
 <script>
+import {mapGetters, mapActions, mapMutations} from "vuex";
 
 export default {
+  data() {
+    return {
+      test: []
+    }
+  },
   props: {
     notes: {
       type: Array,
@@ -66,32 +85,50 @@ export default {
     grid: {
       type: Boolean,
       required: true
-    },
-    priority: {
-      type: Object,
-      required: true
     }
+  },
+  mounted() {
+    let data = localStorage.getItem('notes')
+    console.log(data);
+    this.test = JSON.parse(data)
+    console.log(this.test + 'test')
   },
   methods: {
     removeNote(i) {
       console.log('Note id is ' + this.notes[i].id);
       this.$store.dispatch("removeNote", i)
     },
-    showInput(i) {
-      console.log(this.notes[i].title);
-    }
-    // fetchPosts() {
-    //   this.$store.dispatch('fetchPosts')
-    // },
-    // getNoteIndex(i) {
-    //   console.log(`${this.notes[i].id}`);
-    // }
-  }
+    editNoteTitle(i) {
+      this.$store.dispatch('editNoteTitle', i)
+    },
+    saveNewTitle(i) {
+      let temporary = []
+      temporary.push(this.notes[i].title)
+      this.notes[i].newTitle = this.notes[i].title
+      this.notes[i].date = new Date(Date.now()).toLocaleString()
+      this.notes[i].isEdit = false
+      // this.$store.dispatch('saveNewTitle', i);
+    },
+    loadTitle(i) {
+      let temporary = []
+      temporary.push(this.notes[i].newTitle)
+      if (temporary !== this.notes[i].title) {
+        this.notes[i].title = this.notes[i].newTitle
+      }
+      this.notes[i].isEdit = false
+    },
+  },
 }
 
 </script>
 
 <style lang="scss" scoped>
+.note {
+  transition: .3s ease-in-out;
+  &:hover {
+    scale: 102%;
+  }
+}
 p {
   padding: 8px;
   margin: 0;
