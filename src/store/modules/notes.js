@@ -3,6 +3,7 @@ import axios from "axios";
 export default {
     //Initial state
     state: {
+         localNotes: [],
          notes: [
             {
                 id: 1,
@@ -64,6 +65,13 @@ export default {
         getNotes(state) {
             return state.notes
         },
+        //геттер для заметок из локал стора
+        getLocalNotes(state) {
+            let data = localStorage.getItem('notes')
+            let localNotes = JSON.parse(data)
+            this.notes = [...localNotes]
+            return state.notes
+        },
         getSearchNotes: state => value => {
             let array = state.notes
             if (!value) {
@@ -80,6 +88,10 @@ export default {
         },
     },
     mutations: {
+        pushLocalNotes(state) {
+            let localNotes = state.notes
+            localStorage.setItem('notes', JSON.stringify(localNotes))
+        },
         // saveNewTitle(state, index) {
         //     state.notes[index].newTitle = state.notes[index].title
         //     this.notes[index].isEdit = false
@@ -102,6 +114,10 @@ export default {
         },
     },
     actions: {
+        //Заполняем локальное хранилище заметками
+        pushLocalNotes({commit}, payload) {
+            commit('pushLocalNotes', payload)
+        },
         saveNewTitle({commit}, payload) {
             commit('saveNewTitle', payload)
         },

@@ -1,7 +1,7 @@
 <template>
   <div class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
-    <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in test" :key="i">
+    <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
       <div class="note-body
                border
                border-primary
@@ -88,10 +88,11 @@ export default {
     }
   },
   mounted() {
-    let data = localStorage.getItem('notes')
-    console.log(data);
-    this.test = JSON.parse(data)
-    console.log(this.test + 'test')
+      this.$store.dispatch('pushLocalNotes')
+    // let data = localStorage.getItem('notes')
+    // console.log(data);
+    // this.test = JSON.parse(data)
+    // console.log(this.test)
   },
   methods: {
     removeNote(i) {
