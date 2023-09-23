@@ -63,15 +63,16 @@ export default {
     },
     getters: {
         getNotes(state) {
+            state.notes = JSON.parse(localStorage.getItem('notes'))
             return state.notes
         },
         //геттер для заметок из локал стора
-        getLocalNotes(state) {
-            let data = localStorage.getItem('notes')
-            let localNotes = JSON.parse(data)
-            this.notes = [...localNotes]
-            return state.notes
-        },
+        // getLocalNotes(state) {
+        //     let data = localStorage.getItem('notes')
+        //     let localNotes = JSON.parse(data)
+        //     this.notes = [...localNotes]
+        //     return state.notes
+        // },
         getSearchNotes: state => value => {
             let array = state.notes
             if (!value) {
@@ -108,6 +109,7 @@ export default {
         },
         addNote(state, newNote) {
             state.notes.push(newNote)
+            localStorage.setItem('notes', JSON.stringify(state.notes))
         },
         removeNote(state, index) {
             state.notes.splice(index, 1)

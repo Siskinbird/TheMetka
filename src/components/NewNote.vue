@@ -64,7 +64,7 @@ export default {
   data() {
     return {
       message: null,
-      notes: localStorage.getItem('notes'),
+      notes: [],
       note: {
         title: '',
         newTitle: '',
@@ -95,9 +95,24 @@ export default {
       this.note.isEdit = false
       this.note.priority = 'Default'
     },
+    // addLocalNote() {
+    //   if ((this.note.title.length > 2) && (this.note.descr !== '')) {
+    //     let {title, descr, priority } = this.note
+    //     this.$store.dispatch('addLocalNote', {
+    //       id: this.$store.getters.getLocalNotes.length + 1,
+    //       title,
+    //       newTitle: title,
+    //       descr,
+    //       isEdit: false,
+    //       priority,
+    //       date: new Date(Date.now()).toLocaleString()
+    //     })
+    //     }
+    //   }
+    // },
     addNote() {
       if ((this.note.title.length > 2) && (this.note.descr !== '')) {
-        let {title, descr, priority } = this.note
+        let {title, descr, priority} = this.note
         this.$store.dispatch('addNote', {
           id: this.$store.getters.getNotes.length + 1,
           title,
@@ -106,8 +121,11 @@ export default {
           isEdit: false,
           priority,
           date: new Date(Date.now()).toLocaleString()
+
         })
-        // localStorage.setItem('note', JSON.stringify(this.note))
+
+        //localStorage.setItem('notes', JSON.stringify(this.note))
+
         //
         //
         // this.notes.push(localStorage.getItem('notes'))

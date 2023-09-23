@@ -25,6 +25,7 @@
         <!--NOTES COMPONENT-->
         <notes
             :notes="notesFilter"
+            :localNotes="this.$store.state.localNotes"
             :grid="grid"
             :priority="note.priority"
         />
@@ -67,11 +68,12 @@ export default {
         }
       },
       notes: this.getNotes,
+      localNotes: this.getLocalNotes
     }
   },
 
   computed: {
-    ...mapGetters(['getSearchNotes', "getNotes"]),
+    ...mapGetters(['getSearchNotes', "getNotes", "getLocalNotes"]),
     notesFilter () {
       return this.getSearchNotes(this.search)
     }
