@@ -71,6 +71,7 @@
 <script>
 import {mapGetters, mapActions, mapMutations} from "vuex";
 
+
 export default {
 
   props: {
@@ -88,9 +89,13 @@ export default {
     this.notes = this.$store.getters.getNotes
   },
   computed: {
-    ...mapGetters(['getNotes'])
+    ...mapGetters(['getNotes', 'getMoment'])
   },
   methods: {
+    makeCalculate() {
+      this.$moment.locale('ru')
+      return this.$moment().format('LLLL')
+    },
     removeNote(i) {
       console.log('Note id is ' + this.notes[i].id);
       this.$store.dispatch("removeNote", i)
@@ -103,7 +108,7 @@ export default {
         let temporary = [];
         temporary.push(this.notes[i].title)
         this.notes[i].newTitle = this.notes[i].title
-        this.notes[i].date = new Date(Date.now()).toLocaleString()
+        this.notes[i].date = this.makeCalculate(new Date(Date.now()))
         this.notes[i].isEdit = false
         localStorage.setItem('notes', JSON.stringify(this.notes))
       } else {

@@ -80,6 +80,10 @@ export default {
                 return array;
             }
         },
+        // getMoment() {
+        //     this.$moment.locale('ru')
+        //     return this.$moment().format('LLLL')
+        // }
     },
     mutations: {
         editNoteTitle(state, index) {

@@ -29,15 +29,14 @@
     </div>
 
     <div class="button-block mt-4 d-flex justify-content-between flex-column flex-sm-row">
-      <b-button @click="reset" variant="danger" size="sm" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>
+      <b-button @click="addNote" variant="success" size="lg" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>
       <b-form-select
           v-model="note.priority"
           :options="note.options"
           class="select rounded mx-sm-2"
           >
       </b-form-select>
-
-      <b-button @click="addNote" variant="success" size="sm" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>
+      <b-button @click="reset" variant="danger" size="lg" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>
     </div>
   </div>
 </template>
@@ -45,7 +44,8 @@
 <script>
 import message from "@/components/Message";
 import notes from "@/store/modules/notes";
-
+import moment from "moment";
+import {mapGetters} from "vuex";
 
 
 
@@ -73,6 +73,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters['getMoment'],
     nameState() {
       if (this.note.title.length === 0) {
         return this.note.nameState = null
@@ -87,6 +88,10 @@ export default {
   //   })
   // },
   methods: {
+    makeCalculate() {
+      this.$moment.locale('ru')
+      return this.$moment().format('LLLL')
+    },
     reset() {
       this.note.title = ''
       this.note.descr = ''
@@ -123,8 +128,7 @@ export default {
           descr,
           isEdit: false,
           priority,
-          date: new Date(Date.now()).toLocaleString(),
-
+          date: this.makeCalculate(new Date(Date.now())),
         })
 
         this.reset()
@@ -138,7 +142,11 @@ export default {
 <style lang="scss" scoped>
 .select {
   max-width: 100%;
-  min-height: 31px;
+  min-height: 48px;
+  @media (max-width: 575px) {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
 }
   //.button-block {
   //  @include media-breakpoint-down() {
