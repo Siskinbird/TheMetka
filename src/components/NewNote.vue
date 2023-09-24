@@ -87,6 +87,11 @@ export default {
       } else return this.note.title.length > 2;
     }
   },
+  // created() {
+  //   window.addEventListener('storage', () => {
+  //     console.log("This is localChanger");
+  //   })
+  // },
   methods: {
     reset() {
       this.note.title = ''
@@ -114,7 +119,7 @@ export default {
       if ((this.note.title.length > 2) && (this.note.descr !== '')) {
         let {title, descr, priority} = this.note
         this.$store.dispatch('addNote', {
-          id: this.$store.getters.getNotes.length + 1,
+          id: Date.now().toString(),
           title,
           newTitle: title,
           descr,
