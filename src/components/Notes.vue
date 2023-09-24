@@ -44,8 +44,8 @@
                      @keydown.esc="loadTitle(i)"
                      autofocus
             />
-          </div>
 
+          </div>
                       <!---------------------------REMOVE NOTE------------------------------->
           <div class="note-remove col-2 d-flex align-items-center justify-content-center">
             <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light" @click="removeNote(i)"/>
@@ -72,11 +72,7 @@
 import {mapGetters, mapActions, mapMutations} from "vuex";
 
 export default {
-  // data() {
-  //   return {
-  //     notes: this.$store.getters.getNotes
-  //   }
-  // },
+
   props: {
     //Для закрытия ошибки закомментировать пропс notes, но с ошибкой оно реактивно, без, приходится перезагружаться
      notes: {
@@ -90,14 +86,9 @@ export default {
   },
   mounted() {
     this.notes = this.$store.getters.getNotes
-    //localStorage.setItem('localNotes', JSON.stringify(this.localNotes))
-    // const data = localStorage.getItem('localNotes')
-    // this.localNotes = JSON.parse(data)
-      //this.$store.dispatch('pushLocalNotes')
-    // let data = localStorage.getItem('notes')
-    // console.log(data);
-    // this.notes = [...JSON.parse(data)]
-    // console.log(this.test)
+  },
+  computed: {
+    ...mapGetters(['getNotes'])
   },
   methods: {
     removeNote(i) {
@@ -108,12 +99,17 @@ export default {
       this.$store.dispatch('editNoteTitle', i)
     },
     saveNewTitle(i) {
-      let temporary = []
-      temporary.push(this.notes[i].title)
-      this.notes[i].newTitle = this.notes[i].title
-      this.notes[i].date = new Date(Date.now()).toLocaleString()
-      this.notes[i].isEdit = false
-      // this.$store.dispatch('saveNewTitle', i);
+      if (this.notes[i].title.length > 2 && this.notes[i].title.length < 30) {
+        let temporary = [];
+        temporary.push(this.notes[i].title)
+        this.notes[i].newTitle = this.notes[i].title
+        this.notes[i].date = new Date(Date.now()).toLocaleString()
+        this.notes[i].isEdit = false
+        localStorage.setItem('notes', JSON.stringify(this.notes))
+      } else {
+        console.log('Title must be be be be be be be be');
+      }
+
     },
     loadTitle(i) {
       let temporary = []
@@ -147,6 +143,10 @@ p {
 .note-body {
   min-height: 210px;
   background-image: url("../assets/img/squared-paper-texture.jpg");
+}
+.note-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ml-40px {

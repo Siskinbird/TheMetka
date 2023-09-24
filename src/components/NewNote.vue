@@ -27,9 +27,7 @@
           max-rows="6"
       />
     </div>
-<!--    <div class="note-priority">-->
 
-<!--    </div>-->
     <div class="button-block mt-4 d-flex justify-content-between flex-column flex-sm-row">
       <b-button @click="reset" variant="danger" size="sm" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>
       <b-form-select
@@ -38,12 +36,6 @@
           class="select rounded mx-sm-2"
           >
       </b-form-select>
-
-<!--      <b-dropdown text="Приоритет" size="md">-->
-<!--        <b-dropdown-item @click="note.priority.height = true">Очень важный</b-dropdown-item>-->
-<!--        <b-dropdown-item @click="note.priority.medium = true">Важный</b-dropdown-item>-->
-<!--        <b-dropdown-item @click="note.priority.default = true">Обычный</b-dropdown-item>-->
-<!--      </b-dropdown>-->
 
       <b-button @click="addNote" variant="success" size="sm" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>
     </div>
@@ -84,6 +76,8 @@ export default {
     nameState() {
       if (this.note.title.length === 0) {
         return this.note.nameState = null
+      } else if (this.note.title.length > 27) {
+        return false
       } else return this.note.title.length > 2;
     }
   },
@@ -116,7 +110,11 @@ export default {
     //   }
     // },
     addNote() {
-      if ((this.note.title.length > 2) && (this.note.descr !== '')) {
+      if (this.note.title.length < 2) {
+        this.message = 'Title can`t be empty'
+      } else if (this.note.title.length > 29) {
+        return this.message = 'Title must be les 30 letter'
+      } else {
         let {title, descr, priority} = this.note
         this.$store.dispatch('addNote', {
           id: Date.now().toString(),
@@ -125,20 +123,13 @@ export default {
           descr,
           isEdit: false,
           priority,
-          date: new Date(Date.now()).toLocaleString()
+          date: new Date(Date.now()).toLocaleString(),
 
         })
 
-        //localStorage.setItem('notes', JSON.stringify(this.note))
-
-        //
-        //
-        // this.notes.push(localStorage.getItem('notes'))
-        // console.log(notes);
         this.reset()
-      } else {
-        this.message = 'Title can`t be empty'
-        console.log('Title not be a empty')
+            //return this.message = 'zbs'
+
       }
     }
   }
