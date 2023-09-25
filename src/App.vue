@@ -1,7 +1,9 @@
 <template>
+  <div class="bg">
+
   <div class="wrapper">
     <!--  APP MAIN CONTAINER-->
-    <div class="container border border-success mt-4 mb-4 pb-4 rounded-top rounded-bottom shadow-lg">
+    <div class="container border border-success  pb-4 rounded-top rounded-bottom shadow-lg">
       <div id="app">
         <!--H1 MAIN TITLE-->
         <mainTitle title="Note App v2.1" sub-title="Hello!"/>
@@ -30,6 +32,7 @@
         />
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -87,7 +90,14 @@ $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
 
 //Mine
 body {
-  background-image: url("../src/assets/img/bgnotepaper.jpg");
+  margin-top: -24px;
+}
+.bg {
+  background: #FFF0E5 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle r="2" fill="%23888" /></svg>') repeat;
+  height: 100%;
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 #app {
   font-family: $font-family-base;
@@ -98,6 +108,7 @@ body {
   margin-top: 60px;
 }
 .wrapper {
+
   max-width: 880px;
   margin: 0 auto;
   padding-left: 20px;
