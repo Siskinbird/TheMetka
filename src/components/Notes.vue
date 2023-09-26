@@ -28,7 +28,7 @@
         >
 
                         <!---------------------------NOTE TITLE--------------------------->
-          <div class="note-title col-10">
+          <div :class="{'col-12': note.isEdit}" class="note-title col-10">
             <p id="paragraph"
                role='button'
                class="text-light ml-40px"
@@ -36,19 +36,37 @@
                @click="editNoteTitle(i)">{{ note.title }}
             </p>
 
+
                     <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
-            <b-input v-on:blur="notes[i].isEdit = false"
-                     v-model="note.title"
-                     v-if="notes[i].isEdit"
-                     @keydown.enter="saveNewTitle(i)"
-                     @keydown.esc="loadTitle(i)"
-                     autofocus
-            />
+
+            <b-form-input
+                v-if="notes[i].isEdit"
+                v-model="note.title"
+                :state="note.title.length > 2 && 30 > note.title.length"
+                v-on:blur="loadTitle(i)"
+                @keydown.enter="saveNewTitle(i)"
+                @keydown.esc="loadTitle(i)"
+                aria-describedby="input-live-help input-live-feedback"
+                autofocus
+                trim
+
+            ></b-form-input>
+
+
+<!--            <b-input v-on:blur="loadTitle(i)"-->
+<!--                     v-model="note.title"-->
+<!--                     v-if="notes[i].isEdit"-->
+<!--                     @keydown.enter="saveNewTitle(i)"-->
+<!--                     @keydown.esc="loadTitle(i)"-->
+<!--                     autofocus-->
+<!--            />-->
 
           </div>
                       <!---------------------------REMOVE NOTE------------------------------->
-          <div class="note-remove col-2 d-flex align-items-center justify-content-center">
-            <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light" @click="removeNote(i)"/>
+          <div v-if="!note.isEdit" :class="{'d-none': note.isEdit}" class="note-remove col-2 d-flex align-items-center justify-content-center">
+            <div>
+              <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light" @click="removeNote(i)"/>
+            </div>
           </div>
         </div>
 
@@ -89,7 +107,13 @@ export default {
     this.notes = this.$store.getters.getNotes
   },
   computed: {
-    ...mapGetters(['getNotes', 'getMoment'])
+    ...mapGetters(['getNotes']),
+
+    // nameState(i) {
+    //   console.log(this.notes[i]);
+    //   return this.notes[i].title.length > 2
+    //
+    // }
   },
   methods: {
     makeCalculate() {

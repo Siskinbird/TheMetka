@@ -3,7 +3,6 @@ import axios from "axios";
 export default {
     //Initial state
     state: {
-         localNotes: [],
          notes: [
             // {
             //     id: 1,
