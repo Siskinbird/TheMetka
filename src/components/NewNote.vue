@@ -142,6 +142,7 @@ export default {
 .select {
   max-width: 100%;
   min-height: 48px;
+  text-align: center;
   @media (max-width: 575px) {
     margin-top: 6px;
     margin-bottom: 6px;
