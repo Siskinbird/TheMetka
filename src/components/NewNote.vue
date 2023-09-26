@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <div class="new-note">
     <!--DANGER MESSAGE-->
     <message v-if="message" :message="message"/>
     <div class="note-title mb-3 shadow-sm">
@@ -73,7 +72,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters['getMoment'],
+    // ...mapGetters['getMoment'],
     nameState() {
       if (this.note.title.length === 0) {
         return this.note.nameState = null
@@ -148,6 +147,9 @@ export default {
     margin-bottom: 6px;
   }
 }
+//.new-note {
+//  z-index: 4;
+//}
   //.button-block {
   //  @include media-breakpoint-down() {
   //    flex-direction: column;

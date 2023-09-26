@@ -63,6 +63,7 @@ export default {
     },
     getters: {
         getNotes(state) {
+            //localStorage.setItem('notes', JSON.stringify(this.notes))
             state.notes = JSON.parse(localStorage.getItem('notes'))
             return state.notes
         },
@@ -80,10 +81,6 @@ export default {
                 return array;
             }
         },
-        // getMoment() {
-        //     this.$moment.locale('ru')
-        //     return this.$moment().format('LLLL')
-        // }
     },
     mutations: {
         editNoteTitle(state, index) {

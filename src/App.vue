@@ -6,7 +6,7 @@
     <div class="container border border-success  pb-4 rounded-top rounded-bottom shadow-lg">
       <div id="app">
         <!--H1 MAIN TITLE-->
-        <mainTitle title="Note App v2.1" sub-title="Hello!"/>
+      <app-header/>
 
         <!--NEW NOTE COMPONENT-->
         <newNote :note="note"/>
@@ -44,10 +44,12 @@ import notes from "@/components/Notes";
 import search from "@/components/Search";
 import newNote from "@/components/NewNote";
 import { mapGetters } from "vuex";
+import appHeader from "@/components/AppHeader";
 
 
 export default {
   components: {
+    appHeader,
     notes,
     mainTitle,
     newNote,
@@ -105,7 +107,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .wrapper {
 
@@ -116,7 +117,9 @@ body {
 }
 .container {
   //max-width: 1140px ;
-  background-color: #fafafa;
+  //background-color: #fafafa;
+  //background-color: #10162fff;
+  background-color: #FFF0E5;
   //margin-left: 20px;
   //margin-right: 20px;
 }
