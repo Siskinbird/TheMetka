@@ -1,7 +1,7 @@
 <template>
   <div class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
-    <div class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+    <div class="note d-flex align-items-stretch col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
       <div class="note-wrapper">
       <div class="note-body
                bb-col
@@ -216,10 +216,6 @@ p {
   height: 100%;
   transition: .2s ease-in-out;
   background-color: #fff;
-}
-.note {
-  display: flex;
-  align-items: stretch;
 }
 .bg-default {
   background-color: #f5fcffff ;
