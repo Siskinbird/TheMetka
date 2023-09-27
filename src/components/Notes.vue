@@ -4,8 +4,7 @@
     <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
       <div class="note-wrapper">
       <div class="note-body
-               border
-               border-primary
+               bb-col
                rounded-top
                rounded-bottom
                shadow
@@ -22,8 +21,6 @@
              class=
                  "note-header
                   col-12
-
-                  border-primary
                   rounded-top
                   bg-default
                   bg-gradient
@@ -32,15 +29,24 @@
         >
 
 
-
                         <!---------------------------NOTE TITLE--------------------------->
+
           <div :class="{'col-12': note.isEdit}" class="note-title col-10">
             <p id="paragraph"
                role='button'
-               class="ml-40px"
                v-if="!notes[i].isEdit"
                @click="editNoteTitle(i)">{{ note.title }}
             </p>
+
+<!--            <div class="line-pattern">-->
+<!--              <svg fill="currentColor" role="img" aria-hidden="true">-->
+<!--                <title>Checker Dense</title>-->
+<!--                <pattern id="CheckerDense-pattern-137" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">-->
+<!--                  <rect width="1" height="1" fill="currentColor"></rect>-->
+<!--                  <rect x="2" y="2" width="1" height="1" fill="currentColor"></rect>-->
+<!--                </pattern><rect width="100%" height="100%" fill="url(#CheckerDense-pattern-137)"></rect>-->
+<!--              </svg>-->
+<!--            </div>-->
 
 
 
@@ -72,19 +78,39 @@
                       <!---------------------------REMOVE NOTE------------------------------->
           <div v-if="!note.isEdit" :class="{'d-none': note.isEdit}" class="note-remove col-2 d-flex align-items-center justify-content-center">
             <div>
-              <b-icon class="removeIco" icon="x-square" font-scale="1" variant="light" @click="removeNote(i)"/>
+              <b-icon class="removeIco" icon="x-square" font-scale="1" variant="black" @click="removeNote(i)"/>
             </div>
           </div>
         </div>
 
-                      <!------------------------NOTE DESCRIPTION----------------------------->
-        <div class="note-description">
 
+
+        <div class="line-pattern mb-auto">
+          <svg fill="currentColor" role="img" aria-hidden="true">
+            <title>Checker Dense</title>
+            <pattern id="CheckerDense-pattern-137" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+              <rect width="1" height="1" fill="currentColor"></rect>
+              <rect x="2" y="2" width="1" height="1" fill="currentColor"></rect>
+            </pattern><rect width="100%" height="100%" fill="url(#CheckerDense-pattern-137)"></rect>
+          </svg>
+        </div>
+                      <!------------------------NOTE DESCRIPTION----------------------------->
+        <div class="note-description text-start">
           <p>{{ note.descr }}</p>
         </div>
 
                           <!------------------------NOTE DATE------------------------>
-        <div class="note-data m-2">
+
+        <div class="note-date ">
+          <div class="line-pattern">
+            <svg fill="currentColor" role="img" aria-hidden="true">
+              <title>Checker Dense</title>
+              <pattern id="CheckerDense-pattern-137" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                <rect width="1" height="1" fill="currentColor"></rect>
+                <rect x="2" y="2" width="1" height="1" fill="currentColor"></rect>
+              </pattern><rect width="100%" height="100%" fill="url(#CheckerDense-pattern-137)"></rect>
+            </svg>
+          </div>
           <span>{{ note.date }}</span>
         </div>
         </div>
@@ -126,7 +152,7 @@ export default {
   methods: {
     makeCalculate() {
       this.$moment.locale('ru')
-      return this.$moment().format('LLLL')
+      return this.$moment().format('LLL')
     },
     removeNote(i) {
       console.log('Note id is ' + this.notes[i].id);
@@ -184,19 +210,12 @@ p {
 
 }
 .note-body {
-  min-height: 210px;
+  min-height: auto;
   transition: .2s ease-in-out;
   background-color: #fff;
-  //box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
-  // &:hover {
-  // scale: 102%;
-  //box-shadow: -48px 48px 0px 0px rgba(0,0,0,1);
 
-
-  //background-image: url("../assets/img/squared-paper-texture.jpg");
 }
 .bg-default {
-
   background-color: #f5fcffff ;
 }
 .bg-medium {
@@ -207,17 +226,53 @@ p {
 }
 
 .note-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  //font-family: 'Roboto Mono', monospace;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
 }
+.note-date {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-size: 14px;
 
-.ml-40px {
-  margin-left: 40px;
 }
 
 .note-remove {
-  //padding-top: 8px;
   cursor: pointer;
   transition: .3s ease-in-out;
+}
+//Border bottom dotted
+.bb-dot {
+  border-bottom: 1px #10162fff dotted;
+  }
+.bt-dot {
+  border-top: 1px #10162fff dotted;
+
+}
+.bb-col {
+  border: 1px #10162fff solid;
+ // color: #10162fff;
+}
+//Line after title svg try
+
+.line-pattern {
+  position: relative;
+  //padding: 2px;
+
+  justify-content: center;
+  height: 4px;
+  svg {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    height: 2px;
+    width: 100%;
+  }
+
 }
 </style>

@@ -89,7 +89,7 @@ export default {
   methods: {
     makeCalculate() {
       this.$moment.locale('ru')
-      return this.$moment().format('LLLL')
+      return this.$moment().format('LLL')
     },
     reset() {
       this.note.title = ''
