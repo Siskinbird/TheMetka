@@ -2,6 +2,7 @@
   <div class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
     <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+      <div class="note-wrapper">
       <div class="note-body
                border
                border-primary
@@ -13,28 +14,34 @@
                justify-content-between"
       >
 
+
+
+
                               <!------------------------PRIORITY CLASS TOGGLE------------------------>
-        <div :class="{ 'bg-danger': note.priority === 'Height', 'bg-warning': note.priority === 'Medium', 'bg-primary': note.priority === 'Default' }"
+        <div :class="{ 'bg-height': note.priority === 'Height', 'bg-medium': note.priority === 'Medium', 'bg-default': note.priority === 'Default' }"
              class=
                  "note-header
                   col-12
-                  border-bottom
+
                   border-primary
                   rounded-top
-                  bg-primary
+                  bg-default
                   bg-gradient
                   d-flex
                   align-baseline"
         >
 
+
+
                         <!---------------------------NOTE TITLE--------------------------->
           <div :class="{'col-12': note.isEdit}" class="note-title col-10">
             <p id="paragraph"
                role='button'
-               class="text-light ml-40px"
+               class="ml-40px"
                v-if="!notes[i].isEdit"
                @click="editNoteTitle(i)">{{ note.title }}
             </p>
+
 
 
                     <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
@@ -72,6 +79,7 @@
 
                       <!------------------------NOTE DESCRIPTION----------------------------->
         <div class="note-description">
+
           <p>{{ note.descr }}</p>
         </div>
 
@@ -79,7 +87,7 @@
         <div class="note-data m-2">
           <span>{{ note.date }}</span>
         </div>
-
+        </div>
       </div>
     </div>
   </div>
@@ -154,13 +162,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.note {
-  transition: .3s ease-in-out;
-  &:hover {
-    scale: 102%;
-  }
-}
+
 p {
+  color: #10162fff;
   padding: 8px;
   margin: 0;
 }
@@ -168,11 +172,40 @@ p {
   flex: 0 0 auto;
   width: 100%;
 }
+.note-wrapper {
+  border-radius: 0.375rem;
+  transition: .2s ease-in-out;
+  &:hover{
+    transform: translate(3%, -3%);
+    -webkit-box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
+    box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
+  }
 
+}
 .note-body {
   min-height: 210px;
-  background-image: url("../assets/img/squared-paper-texture.jpg");
+  transition: .2s ease-in-out;
+  background-color: #fff;
+  //box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
+  // &:hover {
+  // scale: 102%;
+  //box-shadow: -48px 48px 0px 0px rgba(0,0,0,1);
+
+
+  //background-image: url("../assets/img/squared-paper-texture.jpg");
 }
+.bg-default {
+
+  background-color: #f5fcffff ;
+}
+.bg-medium {
+  background-color: #EAFDC6;
+}
+.bg-height {
+  background-color: #fff0e5ff;
+}
+
 .note-title {
   overflow: hidden;
   text-overflow: ellipsis;

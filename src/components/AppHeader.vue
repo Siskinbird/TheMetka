@@ -1,8 +1,18 @@
 <template>
-  <div class="header">
-    <div class="header-inner d-flex align-items-center justify-content-between p-3">
+  <div class="header position-relative">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="49"
+         height="37"
+         stroke="black"
+         fill="none"
+         viewBox="0 0 33 25"
+         aria-hidden="true"
+         style="position: absolute; left:2%; top: -4%;">
+      <path fill="#fff" d="M13.95 11.791H8.4L15 0H7.65L0 11.045V25h13.95V11.791Zm18 0H26.4L33 0h-7.35L18 11.045V25h13.95V11.791Z"></path>
+    </svg>
+    <div class="header-inner d-flex align-items-center justify-content-center">
       <img class="app-img" src="../assets/img/photo_2022-12-22_10-30-23.jpg" alt="Auhor avatar">
-      <mainTitle title="Note App v2.1" sub-title="Hello!"/>
+      <mainTitle class="mx-2" title="Note App v2.1" subtitle="Hello!"/>
     </div>
 <!--рафика под хедером-->
     <div class="graph">
@@ -35,6 +45,9 @@ export default {
   margin-right: -12px;
   color: #fafafa;
 }
+.header-inner {
+  min-height: 120px;
+}
 .app-img {
   border-radius: 50%;
   width: 80px;
@@ -50,7 +63,7 @@ export default {
   max-width: 100%;
 }
 .test {
-  margin-bottom: 13px;
+  margin-bottom: 15px;
   width: 100%;
   height: 12px;
   svg {

@@ -5,6 +5,8 @@
     <!--  APP MAIN CONTAINER-->
     <div class="container border border-success  pb-4 rounded-top rounded-bottom shadow-lg">
       <div id="app">
+
+
         <!--H1 MAIN TITLE-->
       <app-header/>
 
@@ -107,6 +109,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
 }
 .wrapper {
 
@@ -114,6 +117,7 @@ body {
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+
 }
 .container {
   //max-width: 1140px ;
