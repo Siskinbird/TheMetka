@@ -1,12 +1,13 @@
 <template>
   <div class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
-    <div class="note col-12 col-sm-6 g-4 " :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+    <div class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
       <div class="note-wrapper">
       <div class="note-body
                bb-col
                rounded-top
                rounded-bottom
+
                shadow
                d-flex
                flex-column
@@ -85,7 +86,7 @@
 
 
 
-        <div class="line-pattern mb-auto">
+        <div class="line-pattern">
           <svg fill="currentColor" role="img" aria-hidden="true">
             <title>Checker Dense</title>
             <pattern id="CheckerDense-pattern-137" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
@@ -95,7 +96,7 @@
           </svg>
         </div>
                       <!------------------------NOTE DESCRIPTION----------------------------->
-        <div class="note-description text-start">
+        <div class="note-description text-start  mb-auto">
           <p>{{ note.descr }}</p>
         </div>
 
@@ -191,7 +192,7 @@ export default {
 
 p {
   color: #10162fff;
-  padding: 8px;
+  padding: 8px 12px;
   margin: 0;
 }
 .grid {
@@ -201,6 +202,8 @@ p {
 .note-wrapper {
   border-radius: 0.375rem;
   transition: .2s ease-in-out;
+  //display: flex;
+  //align-items: stretch;
   &:hover{
     transform: translate(3%, -3%);
     -webkit-box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
@@ -210,10 +213,13 @@ p {
 
 }
 .note-body {
-  min-height: auto;
+  height: 100%;
   transition: .2s ease-in-out;
   background-color: #fff;
-
+}
+.note {
+  display: flex;
+  align-items: stretch;
 }
 .bg-default {
   background-color: #f5fcffff ;
@@ -254,22 +260,19 @@ p {
   border: 1px #10162fff solid;
  // color: #10162fff;
 }
+
 //Line after title svg try
 
 .line-pattern {
   position: relative;
-  //padding: 2px;
-
   justify-content: center;
   height: 4px;
   svg {
     position: absolute;
-
     top: 0;
     left: 0;
     padding-left: 8px;
     padding-right: 8px;
-
     height: 2px;
     width: 100%;
   }

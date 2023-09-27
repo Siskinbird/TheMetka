@@ -27,15 +27,17 @@
       />
     </div>
 
-    <div class="button-block mt-4 d-flex justify-content-between flex-column flex-sm-row">
-      <b-button @click="addNote" variant="success" size="lg" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>
+    <div class="button-block mt-4 d-flex justify-content-between align-items-center flex-column flex-sm-row">
+      <button @click="addNote" class="btn-l btn-ok col-12 col-md-3 col-sm-4 mt-sm-0 mt-3 rounded">Сохранить</button>
+<!--      <b-button @click="addNote" variant="success" size="lg" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>-->
       <b-form-select
           v-model="note.priority"
           :options="note.options"
           class="select rounded mx-sm-2"
           >
       </b-form-select>
-      <b-button @click="reset" variant="danger" size="lg" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>
+      <button @click="reset" class="btn-l btn-cancel col-12 col-md-3 col-sm-4 mb-sm-0 mb-3 rounded">Сбросить</button>
+<!--      <b-button @click="reset" variant="danger" size="lg" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>-->
     </div>
   </div>
 </template>
@@ -141,13 +143,51 @@ export default {
 <style lang="scss" scoped>
 .select {
   max-width: 100%;
-  min-height: 48px;
+  min-height: 42px;
   text-align: center;
   @media (max-width: 575px) {
     margin-top: 6px;
     margin-bottom: 6px;
   }
 }
+
+  .btn-l {
+    background: 0 0;
+    border: 2px solid #3498DB;
+    color: #3498DB;
+    transition: all .5s;
+    padding: 7px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 2px;
+    //margin: 5px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    &:hover, &:focus {
+      color: #fff;
+      background: #3498DB;
+    }
+  }
+.btn-ok {
+  border-color: #009e7e;
+  color: #009e7e;
+  &:hover, &:focus {
+    background: #009e7e;
+  }
+}
+.btn-cancel {
+  border-color: #cd201f;
+  color: #cd201f;
+  &:hover, &:focus {
+    background: #cd201f;
+  }
+}
+.accept-button {
+
+}
+.reset-button {
+
+}
+
 //.new-note {
 //  z-index: 4;
 //}
