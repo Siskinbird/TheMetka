@@ -3,8 +3,10 @@
     <!--DANGER MESSAGE-->
     <message v-if="message" :message="message"/>
     <div class="note-title mb-3 mt-3 shadow-sm">
-<!--      <label for="input-live">Title:</label>-->
+
+      <!--TITLE INPUT-->
       <b-form-input
+          title="Сюда нужно ввести заголовок заметки"
           class="title-input"
           id="input-live"
           v-model="note.title"
@@ -13,12 +15,17 @@
           placeholder="Введите название заметки"
           trim
       />
+
+      <!--DANGER FEEDBACK MESSAGE-->
       <b-form-invalid-feedback id="input-live-feedback">
         Название заметки должно состоять из 3х или более букв!
       </b-form-invalid-feedback>
     </div>
+
+      <!--NOTE DESCRIPTION-->
     <div class="note-descr shadow-sm">
       <b-form-textarea
+          title="Это поле ждёт только самые светлые мысли!"
           id="textarea"
           v-model="note.descr"
           placeholder="Введите текст заметки..."
@@ -27,9 +34,11 @@
       />
     </div>
 
+    <!--ACCEPT BUTTON-->
     <div class="button-block mt-4 d-flex justify-content-between align-items-center flex-column flex-sm-row">
       <button title="Сохранить заметку" @click="addNote" class="btn-l btn-ok col-12 col-md-3 col-sm-4 mt-sm-0 mt-3 rounded">Сохранить</button>
-<!--      <b-button @click="addNote" variant="success" size="lg" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>-->
+
+      <!--CHECK PRIORITY-->
       <b-form-select
           title="Выберите приоритет"
           v-model="note.priority"
@@ -37,8 +46,9 @@
           class="select rounded mx-sm-2"
           >
       </b-form-select>
+
+      <!--RESET BUTTON-->
       <button title="Сбросить все поля" @click="reset" class="btn-l btn-cancel col-12 col-md-3 col-sm-4 mb-sm-0 mb-3 rounded">Сбросить</button>
-<!--      <b-button @click="reset" variant="danger" size="lg" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>-->
     </div>
   </div>
 </template>
@@ -75,7 +85,6 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters['getMoment'],
     nameState() {
       if (this.note.title.length === 0) {
         return this.note.nameState = null
@@ -84,11 +93,7 @@ export default {
       } else return this.note.title.length > 2;
     }
   },
-  // created() {
-  //   window.addEventListener('storage', () => {
-  //     console.log("This is localChanger");
-  //   })
-  // },
+
   methods: {
     makeCalculate() {
       this.$moment.locale('ru')
@@ -101,28 +106,17 @@ export default {
       this.note.isEdit = false
       this.note.priority = 'Default'
     },
-    // addLocalNote() {
-    //   if ((this.note.title.length > 2) && (this.note.descr !== '')) {
-    //     let {title, descr, priority } = this.note
-    //     this.$store.dispatch('addLocalNote', {
-    //       id: this.$store.getters.getLocalNotes.length + 1,
-    //       title,
-    //       newTitle: title,
-    //       descr,
-    //       isEdit: false,
-    //       priority,
-    //       date: new Date(Date.now()).toLocaleString()
-    //     })
-    //     }
-    //   }
-    // },
+
     addNote() {
       if (this.note.title.length < 2) {
         this.message = 'Title can`t be empty'
+        console.log('Title can`t be empty');
       } else if (this.note.descr === '') {
         this.message = 'Description can`t be empty'
+        console.log('Description can`t be empty');
       }
       else if (this.note.title.length > 29) {
+        console.log('Title must be les 30 letter');
         return this.message = 'Title must be les 30 letter'
       } else {
         let {title, descr, priority} = this.note
@@ -157,7 +151,7 @@ export default {
 
   .btn-l {
     background: 0 0;
-    border: 2px solid #3498DB;
+    border: 1px solid #3498DB;
     color: #3498DB;
     transition: all .5s;
     padding: 7px 16px;

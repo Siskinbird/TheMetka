@@ -1,7 +1,7 @@
 <template>
   <div class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
-    <div title="Редактировать заголовок" class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+    <div class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
       <div class="note-wrapper">
       <div class="note-body
                bb-col
@@ -33,23 +33,12 @@
 
                         <!---------------------------NOTE TITLE--------------------------->
 
-          <div :class="{'col-12': note.isEdit}" class="note-title col-10">
+          <div title="Редактировать заголовок" :class="{'col-12': note.isEdit}" class="note-title col-10">
             <p id="paragraph"
                role='button'
                v-if="!notes[i].isEdit"
                @click="editNoteTitle(i)">{{ note.title }}
             </p>
-
-<!--            <div class="line-pattern">-->
-<!--              <svg fill="currentColor" role="img" aria-hidden="true">-->
-<!--                <title>Checker Dense</title>-->
-<!--                <pattern id="CheckerDense-pattern-137" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">-->
-<!--                  <rect width="1" height="1" fill="currentColor"></rect>-->
-<!--                  <rect x="2" y="2" width="1" height="1" fill="currentColor"></rect>-->
-<!--                </pattern><rect width="100%" height="100%" fill="url(#CheckerDense-pattern-137)"></rect>-->
-<!--              </svg>-->
-<!--            </div>-->
-
 
 
                     <!---------------------------NOTE TITLE CHANGER INPUT--------------------------->
@@ -69,15 +58,6 @@
               Заголовок должен быть длиннее 3-х и меньше 29-и символов!
             </b-form-invalid-feedback>
 
-
-<!--            <b-input v-on:blur="loadTitle(i)"-->
-<!--                     v-model="note.title"-->
-<!--                     v-if="notes[i].isEdit"-->
-<!--                     @keydown.enter="saveNewTitle(i)"-->
-<!--                     @keydown.esc="loadTitle(i)"-->
-<!--                     autofocus-->
-<!--            />-->
-
           </div>
                       <!---------------------------REMOVE NOTE------------------------------->
           <div v-if="!note.isEdit" :class="{'d-none': note.isEdit}" class="note-remove col-2 d-flex align-items-center justify-content-center">
@@ -88,10 +68,10 @@
         </div>
 
 
-
+                             <!--. . . . . . . . . . . . . . . . . . . . . . . . . . .-->
         <div class="line-pattern">
           <svg fill="currentColor" role="img" aria-hidden="true">
-            <title>Checker Dense</title>
+            <title>Точечки</title>
             <pattern id="CheckerDense-pattern-137" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
               <rect width="1" height="1" fill="currentColor"></rect>
               <rect x="2" y="2" width="1" height="1" fill="currentColor"></rect>
@@ -99,23 +79,24 @@
           </svg>
         </div>
                       <!------------------------NOTE DESCRIPTION----------------------------->
-        <div class="note-description text-start  mb-auto">
+        <div title="Это твои светлые мысли" class="note-description text-start  mb-auto">
           <p>{{ note.descr }}</p>
         </div>
 
                           <!------------------------NOTE DATE------------------------>
 
         <div class="note-date ">
+                          <!--. . . . . . . . . . . . . . . . . . . . . . . . . . .-->
           <div class="line-pattern">
             <svg fill="currentColor" role="img" aria-hidden="true">
-              <title>Checker Dense</title>
+              <title>Точечки</title>
               <pattern id="CheckerDense-pattern-137" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
                 <rect width="1" height="1" fill="currentColor"></rect>
                 <rect x="2" y="2" width="1" height="1" fill="currentColor"></rect>
               </pattern><rect width="100%" height="100%" fill="url(#CheckerDense-pattern-137)"></rect>
             </svg>
           </div>
-          <span>{{ note.date }}</span>
+          <span title="Дата публикации">{{ note.date }}</span>
         </div>
         </div>
       </div>
@@ -130,6 +111,12 @@ import {mapGetters, mapActions, mapMutations} from "vuex";
 
 export default {
 
+  //Теряем реактивность при распечатывании данных
+  // data() {
+  //   return {
+  //     notes: this.notes
+  //   }
+  // },
   props: {
     //Для закрытия ошибки закомментировать пропс notes, но с ошибкой оно реактивно, без, приходится перезагружаться
      notes: {
@@ -147,11 +134,6 @@ export default {
   computed: {
     ...mapGetters(['getNotes']),
 
-    // nameState(i) {
-    //   console.log(this.notes[i]);
-    //   return this.notes[i].title.length > 2
-    //
-    // }
   },
   methods: {
     makeCalculate() {

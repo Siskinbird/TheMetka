@@ -12,7 +12,7 @@ export default  {
     },
     placeholder: {
       type: String,
-      default: 'Search'
+      default: 'Поиск...'
     }
   },
   data() {
