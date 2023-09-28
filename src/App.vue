@@ -1,10 +1,14 @@
 <template>
+  <div class="bg">
+
   <div class="wrapper">
     <!--  APP MAIN CONTAINER-->
-    <div class="container border border-success mt-4 mb-4 pb-4 rounded-top rounded-bottom shadow-lg">
+    <div class="container border border-success  pb-4 rounded-top rounded-bottom shadow-lg">
       <div id="app">
+
+
         <!--H1 MAIN TITLE-->
-        <mainTitle title="Note App v2.1" sub-title="Hello!"/>
+      <app-header/>
 
         <!--NEW NOTE COMPONENT-->
         <newNote :note="note"/>
@@ -17,8 +21,19 @@
               value=""
           />
           <div class="note-icons col-2 pt-1 d-none d-sm-block">
-            <svg :class="{ active: grid }" class="grid-ico" @click="grid = true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-            <svg :class="{ active: !grid }" class="grid-ico" @click="grid = false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
+            <svg :class="{ active: grid }" class="grid-ico" @click="grid = true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+              <title>Отобразить плиткой</title>
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <svg :class="{ active: !grid }" class="grid-ico" @click="grid = false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <title>Отобразить строкой</title>
+              <line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line>
+              <line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line>
+            </svg>
           </div>
         </div>
 
@@ -31,6 +46,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -41,10 +57,12 @@ import notes from "@/components/Notes";
 import search from "@/components/Search";
 import newNote from "@/components/NewNote";
 import { mapGetters } from "vuex";
+import appHeader from "@/components/AppHeader";
 
 
 export default {
   components: {
+    appHeader,
     notes,
     mainTitle,
     newNote,
@@ -52,7 +70,7 @@ export default {
   },
   data() {
     return {
-      id: notes.length + 1,
+      id: Date,
       search: '',
       grid: true,
       note: {
@@ -87,7 +105,14 @@ $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
 
 //Mine
 body {
-  background-image: url("../src/assets/img/bgnotepaper.jpg");
+  margin-top: -24px;
+}
+.bg {
+  background: #FFF0E5 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle r="2" fill="%23888" /></svg>') repeat;
+  height: 100%;
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 #app {
   font-family: $font-family-base;
@@ -95,17 +120,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+
 }
 .wrapper {
+
   max-width: 880px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+
 }
 .container {
   //max-width: 1140px ;
-  background-color: #fafafa;
+  //background-color: #fafafa;
+  //background-color: #10162fff;
+  background-color: #FFF0E5;
   //margin-left: 20px;
   //margin-right: 20px;
 }
