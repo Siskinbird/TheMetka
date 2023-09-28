@@ -3,7 +3,7 @@
 
   <div class="wrapper">
     <!--  APP MAIN CONTAINER-->
-    <div class="container border border-success  pb-4 rounded-top rounded-bottom shadow-lg">
+    <div class="container border border-secondary  pb-4 rounded-top rounded-bottom shadow-lg">
       <div id="app">
 
 

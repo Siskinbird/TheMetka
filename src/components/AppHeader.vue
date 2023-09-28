@@ -70,7 +70,7 @@ export default {
   height: 13px;
 }
 .test {
-  margin-top: -13px;
+  margin-top: -15px;
   width: 100%;
   height: 12px;
   svg {

@@ -64,8 +64,10 @@
                 aria-describedby="input-live-help input-live-feedback"
                 autofocus
                 trim
-
-            ></b-form-input>
+            />
+            <b-form-invalid-feedback id="input-live-feedback" class="input-live-feedback">
+              Заголовок должен быть длиннее 3-х и меньше 29-и символов!
+            </b-form-invalid-feedback>
 
 
 <!--            <b-input v-on:blur="loadTitle(i)"-->
@@ -240,7 +242,11 @@ p {
   font-family: 'Roboto Mono', monospace;
   font-weight: 400;
   font-size: 14px;
-
+}
+.input-live-feedback {
+  padding: 8px 12px;
+  text-align: center;
+  transition: .3s ease-in-out;
 }
 
 .note-remove {
