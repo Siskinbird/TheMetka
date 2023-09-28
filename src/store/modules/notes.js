@@ -1,71 +1,24 @@
 import axios from "axios";
 
 export default {
-    //Initial state
+
     state: {
-         notes: [
-            // {
-            //     id: 1,
-            //     title: 'Рыба...',
-            //     newTitle: 'Рыба...',
-            //     descr: 'Как выровнять блок по центру контейнера? И не отхватить леща от тим лида?',
-            //     date: new Date(Date.now()).toLocaleString(),
-            //     priority: 'Height',
-            //     isEdit: false
-            // },
-            // {
-            //     id: 2,
-            //     title: 'Оладышки',
-            //     newTitle: 'Оладышки',
-            //     descr: 'Это что то на вкусном, но варить я их конечно же не буду!',
-            //     date: new Date(Date.now()).toLocaleString(),
-            //     priority: 'Medium',
-            //     isEdit: false
-            // },
-            // {
-            //     id: 3,
-            //     title: 'Меладзе',
-            //     newTitle: 'Меладзе',
-            //     descr: 'Один из самых страшных кошмаров, это забыть его тексты.',
-            //     date: new Date(Date.now()).toLocaleString(),
-            //     priority: 'Default',
-            //     isEdit: false
-            // },
-            // {
-            //     id: 4,
-            //     title: 'Факт дня',
-            //     newTitle: 'Факт дня',
-            //     descr: 'Правильно сформулированный вопрос, содержит в себе половину ответа.',
-            //     date: new Date(Date.now()).toLocaleString(),
-            //     priority: 'Medium',
-            //     isEdit: false
-            // },
-            // {
-            //     id: 5,
-            //     title: 'Тестовая',
-            //     newTitle: 'Тестовая',
-            //     descr: 'Интересно, сколько ещё нужно времени, для того что бы заработало',
-            //     date: new Date(Date.now()).toLocaleString(),
-            //     priority: 'Default',
-            //     isEdit: false
-            // },
-            {
-                id: 6,
-                title: 'Вперёд!',
-                newTitle: 'Вперёд',
-                descr: 'Видно что прогресс есть,и он продолжает идти вперед!',
-                date: new Date(Date.now()).toLocaleString(),
-                priority: 'Medium',
-                isEdit: false
-            },
-        ]
+         notes: []
     },
     getters: {
+        //Если в локальном хранилище пусто, то закидываем туда пустой массив
+        //если там что-то есть, отрисовываем заметки из хранилища
         getNotes(state) {
-            //localStorage.setItem('notes', JSON.stringify(this.notes))
-            state.notes = JSON.parse(localStorage.getItem('notes'))
-            return state.notes
+            if( JSON.parse(localStorage.getItem('notes')) === null) {
+                localStorage.setItem('notes', JSON.stringify([]))
+            } else {
+                state.notes = JSON.parse(localStorage.getItem('notes'))
+                return state.notes
+            }
         },
+
+        //
+
         getSearchNotes: state => value => {
             let array = state.notes
             if (!value) {
