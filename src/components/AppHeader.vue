@@ -8,13 +8,14 @@
          viewBox="0 0 33 25"
          aria-hidden="true"
          style="position: absolute; left:2%; top: -4%;">
+      <title>Notes App</title>
       <path fill="#fff" d="M13.95 11.791H8.4L15 0H7.65L0 11.045V25h13.95V11.791Zm18 0H26.4L33 0h-7.35L18 11.045V25h13.95V11.791Z"></path>
     </svg>
     <div class="header-inner d-flex align-items-center justify-content-center">
-      <img class="app-img" src="../assets/img/photo_2022-12-22_10-30-23.jpg" alt="Auhor avatar">
+      <img title="Это я, усатый frontend разработчик :)" class="app-img" src="../assets/img/photo_2022-12-22_10-30-23.jpg" alt="Auhor avatar">
       <mainTitle class="mx-2" title="Note App v2.1" subtitle="Hello!"/>
     </div>
-<!--рафика под хедером-->
+
     <div class="graph">
       <svg fill="currentColor" role="img" aria-hidden="true" class="test">
         <title>Diagonal A Dense</title>
@@ -44,9 +45,14 @@ export default {
   margin-left: -12px;
   margin-right: -12px;
   color: #fafafa;
+
 }
 .header-inner {
   min-height: 120px;
+  @media (max-width: 455px) {
+    padding-top: 20px;
+    flex-direction: column;
+  }
 }
 .app-img {
   border-radius: 50%;
@@ -61,9 +67,10 @@ export default {
   //margin: 0;
   //padding: 0;
   max-width: 100%;
+  height: 13px;
 }
 .test {
-  margin-bottom: 15px;
+  margin-top: -13px;
   width: 100%;
   height: 12px;
   svg {

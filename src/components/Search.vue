@@ -1,5 +1,5 @@
 <template>
-  <div class="search col-12 col-sm-10">
+  <div title="Поиск по заметкам" class="search col-12 col-sm-10">
     <b-form-input type="search" v-model="search" :placeholder="placeholder"/>
   </div>
 </template>

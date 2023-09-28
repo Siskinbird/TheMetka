@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5 class="text-bg-danger rounded-pill p-2">{{message}}</h5>
+    <h5 class="text-bg-danger rounded p-2">{{message}}</h5>
   </div>
 </template>
 <script>

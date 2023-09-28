@@ -1,4 +1,4 @@
-# note-app-2.1
+# :notebook: Заметки-2.1 :notebook:
 
 ## Project setup
 ```
@@ -15,5 +15,5 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
+### Deploy
 See [Configuration Reference](https://cli.vuejs.org/config/).

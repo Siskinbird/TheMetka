@@ -1,7 +1,7 @@
 <template>
   <div class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
-    <div class="note d-flex align-items-stretch col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+    <div title="Редактировать заголовок" class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
       <div class="note-wrapper">
       <div class="note-body
                bb-col
@@ -11,6 +11,7 @@
                shadow
                d-flex
                flex-column
+
                justify-content-between"
       >
 
@@ -78,7 +79,7 @@
           </div>
                       <!---------------------------REMOVE NOTE------------------------------->
           <div v-if="!note.isEdit" :class="{'d-none': note.isEdit}" class="note-remove col-2 d-flex align-items-center justify-content-center">
-            <div>
+            <div title="Удалить заметку">
               <b-icon class="removeIco" icon="x-square" font-scale="1" variant="black" @click="removeNote(i)"/>
             </div>
           </div>
@@ -202,15 +203,17 @@ p {
 .note-wrapper {
   border-radius: 0.375rem;
   transition: .2s ease-in-out;
-  //display: flex;
-  //align-items: stretch;
+  height: 100%;
+  align-items: stretch;
   &:hover{
     transform: translate(3%, -3%);
     -webkit-box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
     -moz-box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
     box-shadow: -8px 8px 0px 0px rgba(0,0,0,1);
   }
-
+}
+.note {
+ height: auto;
 }
 .note-body {
   height: 100%;

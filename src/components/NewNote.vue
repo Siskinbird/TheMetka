@@ -2,7 +2,7 @@
   <div class="new-note">
     <!--DANGER MESSAGE-->
     <message v-if="message" :message="message"/>
-    <div class="note-title mb-3 shadow-sm">
+    <div class="note-title mb-3 mt-3 shadow-sm">
 <!--      <label for="input-live">Title:</label>-->
       <b-form-input
           class="title-input"
@@ -28,15 +28,16 @@
     </div>
 
     <div class="button-block mt-4 d-flex justify-content-between align-items-center flex-column flex-sm-row">
-      <button @click="addNote" class="btn-l btn-ok col-12 col-md-3 col-sm-4 mt-sm-0 mt-3 rounded">Сохранить</button>
+      <button title="Сохранить заметку" @click="addNote" class="btn-l btn-ok col-12 col-md-3 col-sm-4 mt-sm-0 mt-3 rounded">Сохранить</button>
 <!--      <b-button @click="addNote" variant="success" size="lg" class="col-12 col-md-3 col-sm-4 mt-sm-0 mt-3">Сохранить</b-button>-->
       <b-form-select
+          title="Выберите приоритет"
           v-model="note.priority"
           :options="note.options"
           class="select rounded mx-sm-2"
           >
       </b-form-select>
-      <button @click="reset" class="btn-l btn-cancel col-12 col-md-3 col-sm-4 mb-sm-0 mb-3 rounded">Сбросить</button>
+      <button title="Сбросить все поля" @click="reset" class="btn-l btn-cancel col-12 col-md-3 col-sm-4 mb-sm-0 mb-3 rounded">Сбросить</button>
 <!--      <b-button @click="reset" variant="danger" size="lg" class="col-12 col-md-3 col-sm-4 mb-sm-0 mb-3">Сбросить</b-button>-->
     </div>
   </div>
@@ -118,7 +119,10 @@ export default {
     addNote() {
       if (this.note.title.length < 2) {
         this.message = 'Title can`t be empty'
-      } else if (this.note.title.length > 29) {
+      } else if (this.note.descr === '') {
+        this.message = 'Description can`t be empty'
+      }
+      else if (this.note.title.length > 29) {
         return this.message = 'Title must be les 30 letter'
       } else {
         let {title, descr, priority} = this.note
