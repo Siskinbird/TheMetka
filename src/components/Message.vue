@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5 class="text-bg-danger rounded p-2">{{message}}</h5>
+    <h5 title="Опа... Ошибочка вышла" class="text-bg-danger rounded p-2">{{message}}</h5>
   </div>
 </template>
 <script>

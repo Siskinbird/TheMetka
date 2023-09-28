@@ -3,7 +3,7 @@
 
   <div class="wrapper">
     <!--  APP MAIN CONTAINER-->
-    <div class="container border border-success  pb-4 rounded-top rounded-bottom shadow-lg">
+    <div class="container border border-secondary pb-4 rounded-top rounded-bottom shadow-lg">
       <div id="app">
 
 
@@ -78,11 +78,6 @@ export default {
         newTitle: '',
         descr: '',
         date: new Date(Date.now()).toLocaleString(),
-        priority: {
-          default: false,
-          height: false,
-          medium: false
-        }
       },
       notes: this.getNotes,
     }
@@ -106,13 +101,15 @@ $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
 //Mine
 body {
   margin-top: -24px;
+  background: #FFF0E5 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle r="2" fill="%23888" /></svg>') repeat !important;
 }
+
 .bg {
-  background: #FFF0E5 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle r="2" fill="%23888" /></svg>') repeat;
-  height: 100%;
-  width: 100%;
+
+  //width: 100%;
   padding-top: 24px;
   padding-bottom: 24px;
+  //height: 100%;
 }
 #app {
   font-family: $font-family-base;
@@ -122,21 +119,15 @@ body {
   color: #2c3e50;
 
 }
-.wrapper {
 
+.wrapper {
   max-width: 880px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
-
 }
 .container {
-  //max-width: 1140px ;
-  //background-color: #fafafa;
-  //background-color: #10162fff;
   background-color: #FFF0E5;
-  //margin-left: 20px;
-  //margin-right: 20px;
 }
 .grid-ico {
   cursor: pointer;
