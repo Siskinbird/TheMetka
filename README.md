@@ -1,11 +1,9 @@
 # :floppy_disk: Заметки-2.1 :notebook_with_decorative_cover:
 
 ## :heavy_exclamation_mark: О приложении:
-```
-Эти заметки созданы с :hearts: , скромный функцционал только для 
-тех, кому не нужно ничего лишнего! Ваши заметки останутся только 
-на том устройстве с которого вы их сделали, это же так удобно!
-```
+
+Эти заметки созданы с :hearts: , скромный функционал только для тех, кому не нужно ничего лишнего! Ваши заметки останутся только на том устройстве с которого вы их сделали, это же так удобно!
+
 
 ### :heavy_exclamation_mark: Функционал приложения:
 
@@ -16,10 +14,17 @@
 
 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### :interrobang: Стек и библиотеки использованные в проекте:
+
+:chicken: html  
+:chicken: css  
+:chicken: JS  
+:chicken: SCSS  
+:chicken: Vue 2.x  
+:chicken: Bootstrap + Bootstrap-vue  
+:chicken: Moment.js  
+:chicken: Node modules  
+:chicken: LocalStorage 
 
 ### Deploy
 See [Configuration Reference](https://cli.vuejs.org/config/).
