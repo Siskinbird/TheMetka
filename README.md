@@ -1,4 +1,4 @@
-# :floppy_disk: TheMetki-2.1 :books:
+# :floppy_disk: TheMetka-2.1 :books:
 
 ### :heavy_exclamation_mark: О приложении:
 

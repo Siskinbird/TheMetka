@@ -39,7 +39,7 @@ export default {
           state.notes[index].isEdit = !state.notes[index].isEdit;
         },
         addNote(state, newNote) {
-            state.notes.push(newNote)
+            state.notes.unshift(newNote)
             localStorage.setItem('notes', JSON.stringify(state.notes))
         },
         removeNote(state, index) {

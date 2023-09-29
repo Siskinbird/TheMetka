@@ -79,8 +79,8 @@
           </svg>
         </div>
                       <!------------------------NOTE DESCRIPTION----------------------------->
-        <div title="Это твои светлые мысли" class="note-description text-start  mb-auto">
-          <p>{{ note.descr }}</p>
+        <div title="Это твои светлые мысли" class="note-description text-start mb-auto">
+          <p class="p-wrap">{{ note.descr }}</p>
         </div>
 
                           <!------------------------NOTE DATE------------------------>
@@ -263,6 +263,9 @@ p {
     height: 2px;
     width: 100%;
   }
-
+}
+.p-wrap {
+   //word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 </style>
