@@ -13,7 +13,7 @@
     </svg>
     <div class="header-inner d-flex align-items-center justify-content-center">
       <img title="Это я, усатый frontend разработчик :)" class="app-img" src="../assets/img/photo_2022-12-22_10-30-23.jpg" alt="Auhor avatar">
-      <mainTitle class="mx-2" title="TheMetka v2.1" subtitle="Hello!"/>
+      <mainTitle class="mx-2" title="TheMetka.ru" subtitle="Hello!"/>
     </div>
 
     <div class="graph">

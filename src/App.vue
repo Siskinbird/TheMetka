@@ -50,7 +50,7 @@
 </template>
 
 <script>
-
+document.title = 'TheMetka.ru'
 
 import mainTitle from "@/components/MainTitle";
 import notes from "@/components/Notes";
@@ -100,7 +100,6 @@ $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
 
 //Mine
 body {
-  margin-top: -24px;
   background: #FFF0E5 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle r="2" fill="%23888" /></svg>') repeat !important;
 }
 
