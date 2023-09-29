@@ -1,4 +1,4 @@
-# :floppy_disk: Заметки-2.1 :notebook_with_decorative_cover:
+# :floppy_disk: TheMetki-2.1 :books:
 
 ### :heavy_exclamation_mark: О приложении:
 
@@ -13,22 +13,20 @@
 :white_check_mark: Возможность удалить надоевшую заметку навсегда!  
 :white_check_mark: Ну и конечно же, вы сможете создать заметку, назначив ей один из 3-х приоритетов:sparkles:!
 
-
+![Главная страница приложения](src/assets/img/NotesApp.png)
 
 ### :interrobang: Стек и библиотеки использованные в проекте:
 
-:chicken: html  
-:chicken: css  
-:chicken: JS  
-:chicken: SCSS  
-:chicken: Vue 2.x  
-:chicken: Vuex  
-:chicken: Bootstrap + Bootstrap-vue  
-:chicken: Moment.js  
-:chicken: Node modules  
-:chicken: LocalStorage 
+:star2: html  
+:star2: css  
+:star2: JS  
+:star2: SCSS  
+:star2: Vue 2.x  
+:star2: Vuex  
+:star2: Bootstrap + Bootstrap-vue  
+:star2: Moment.js  
+:star2: Node modules  
+:star2: LocalStorage 
 
-### Deploy
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-![Текст с описанием картинки](src/assets/img/NotesApp.png)
+### :information_desk_person: TheMetka.ru
+See [TheMetka.ru](https://theMetka.ru/).
