@@ -30,3 +30,5 @@
 
 ### Deploy
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+![Текст с описанием картинки](src/assets/img/NotesApp.png)
