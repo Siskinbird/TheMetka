@@ -1,5 +1,5 @@
 <template>
-  <div class="header position-relative">
+  <header class="header position-relative">
     <svg xmlns="http://www.w3.org/2000/svg"
          width="49"
          height="37"
@@ -28,7 +28,7 @@
         <rect width="100%" height="100%" fill="url(#DiagonalPattern)"></rect>
       </svg>
     </div>
-  </div>
+  </header>
 </template>
 <script>
 import mainTitle from "@/components/MainTitle";

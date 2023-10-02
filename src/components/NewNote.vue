@@ -1,5 +1,5 @@
 <template>
-  <div class="new-note">
+  <section class="new-note">
     <!--DANGER MESSAGE-->
     <message v-if="message" :message="message"/>
     <div class="note-title mb-3 mt-3 shadow-sm">
@@ -50,7 +50,7 @@
       <!--RESET BUTTON-->
       <button title="Сбросить все поля" @click="reset" class="btn-l btn-cancel col-12 col-md-3 col-sm-4 mb-sm-0 mb-3 rounded">Сбросить</button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

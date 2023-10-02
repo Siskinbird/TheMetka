@@ -1,8 +1,8 @@
 <template>
-  <div class="notes row">
+  <main class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
     <div class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
-      <div class="note-wrapper">
+      <article class="note-wrapper">
       <div class="note-body
                bb-col
                rounded-top
@@ -65,6 +65,7 @@
               <b-icon class="removeIco" icon="x-square" font-scale="1" variant="black" @click="removeNote(i)"/>
             </div>
           </div>
+
         </div>
 
 
@@ -96,17 +97,17 @@
               </pattern><rect width="100%" height="100%" fill="url(#CheckerDense-pattern-137)"></rect>
             </svg>
           </div>
-          <span title="Дата публикации">{{ note.date }}</span>
+          <time title="Дата публикации">{{ note.date }}</time>
         </div>
         </div>
-      </div>
+      </article>
     </div>
-  </div>
+  </main>
 </template>
 
 
 <script>
-import {mapGetters, mapActions, mapMutations} from "vuex";
+import {mapGetters} from "vuex";
 
 
 export default {
@@ -136,6 +137,18 @@ export default {
 
   },
   methods: {
+
+    // removeId() {
+    //   document.addEventListener('click', function(e){
+    //     console.log('target', e.target);
+    //     console.log('currentTarget', e.currentTarget);
+    //     console.log('evt', e);
+    //     console.log(e.target.tagName);;
+    //   });
+      // for(let noteId in this.notes) {
+      //   console.log(noteId.id);
+      // }
+    // },
     makeCalculate() {
       this.$moment.locale('ru')
       return this.$moment().format('LLL')
@@ -143,6 +156,10 @@ export default {
     removeNote(i) {
       console.log('Note id is ' + this.notes[i].id);
       this.$store.dispatch("removeNote", i)
+    },
+    getId(i) {
+      console.log('REMOVE IT ' + this.notes[i].id);
+      return this.notes[i].id
     },
     editNoteTitle(i) {
       this.$store.dispatch('editNoteTitle', i)
