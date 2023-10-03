@@ -34,21 +34,23 @@
       />
     </div>
 
+    <div class="button-block mt-4 d-flex justify-content-end align-items-center flex-column flex-sm-row">
+    <!--CHECK PRIORITY-->
+    <b-form-select
+        title="Выберите приоритет"
+        v-model="note.priority"
+        :options="note.options"
+        class="select rounded mx-sm-2 col-12 col-md-3 col-sm-4"
+    >
+    </b-form-select>
+
     <!--ACCEPT BUTTON-->
-    <div class="button-block mt-4 d-flex justify-content-between align-items-center flex-column flex-sm-row">
+
       <button title="Сохранить заметку" @click="addNote" class="btn-l btn-ok col-12 col-md-3 col-sm-4 mt-sm-0 mt-3 rounded">Сохранить</button>
 
-      <!--CHECK PRIORITY-->
-      <b-form-select
-          title="Выберите приоритет"
-          v-model="note.priority"
-          :options="note.options"
-          class="select rounded mx-sm-2"
-          >
-      </b-form-select>
 
       <!--RESET BUTTON-->
-      <button title="Сбросить все поля" @click="reset" class="btn-l btn-cancel col-12 col-md-3 col-sm-4 mb-sm-0 mb-3 rounded">Сбросить</button>
+<!--      <button title="Сбросить все поля" @click="reset" class="btn-l btn-cancel col-12 col-md-3 col-sm-4 mb-sm-0 mb-3 rounded">Сбросить</button>-->
     </div>
   </section>
 </template>

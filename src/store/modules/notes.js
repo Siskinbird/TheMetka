@@ -1,4 +1,5 @@
 import axios from "axios";
+import notes from "@/components/Notes";
 
 export default {
 
@@ -27,6 +28,7 @@ export default {
                 value = value.trim().toLowerCase()
                 array = array.filter(function (item) {
                     if (item.title.toLowerCase().indexOf(value) !== -1) {
+                        console.log(item.id);
                         return item
                     }
                 })
@@ -42,12 +44,17 @@ export default {
             state.notes.unshift(newNote)
             localStorage.setItem('notes', JSON.stringify(state.notes))
         },
-        removeNote(state, index) {
+        removeNote(state, id) {
             let tempArr = JSON.parse(localStorage.getItem('notes'));
-            tempArr.splice(index, 1);
-            state.notes = [...tempArr]
-            console.log(state.notes);
-            localStorage.setItem('notes', JSON.stringify(state.notes))
+            for(let i = 0; i < tempArr.length; i++) {
+                console.log(id);
+                if(tempArr[i].id === id) {
+                    console.log(tempArr.splice(i, 1));
+
+                    state.notes = [...tempArr]
+                    localStorage.setItem('notes', JSON.stringify(state.notes))
+                }
+            }
         },
     },
     actions: {

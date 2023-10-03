@@ -33,7 +33,7 @@
 
                         <!---------------------------NOTE TITLE--------------------------->
 
-          <div title="Редактировать заголовок" :class="{'col-12': note.isEdit}" class="note-title col-10">
+          <div title="Редактировать заголовок" :class="{'col-12': note.isEdit}" class="note-title col-10 p-wrap">
             <p id="paragraph"
                role='button'
                v-if="!notes[i].isEdit"
@@ -62,7 +62,7 @@
                       <!---------------------------REMOVE NOTE------------------------------->
           <div v-if="!note.isEdit" :class="{'d-none': note.isEdit}" class="note-remove col-2 d-flex align-items-center justify-content-center">
             <div title="Удалить заметку">
-              <b-icon class="removeIco" icon="x-square" font-scale="1" variant="black" @click="removeNote(i)"/>
+              <b-icon class="removeIco" icon="x-square" font-scale="1" variant="black" @click="removeNote(note.id)"/>
             </div>
           </div>
 
@@ -153,13 +153,9 @@ export default {
       this.$moment.locale('ru')
       return this.$moment().format('LLL')
     },
-    removeNote(i) {
-      console.log('Note id is ' + this.notes[i].id);
-      this.$store.dispatch("removeNote", i)
-    },
-    getId(i) {
-      console.log('REMOVE IT ' + this.notes[i].id);
-      return this.notes[i].id
+    removeNote(id) {
+      console.log('Note id is ' + id);
+      this.$store.dispatch("removeNote", id)
     },
     editNoteTitle(i) {
       this.$store.dispatch('editNoteTitle', i)
