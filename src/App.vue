@@ -50,7 +50,7 @@
 </template>
 
 <script>
-document.title = 'TheMetka.ru'
+document.title = 'TheМетки'
 
 import mainTitle from "@/components/MainTitle";
 import notes from "@/components/Notes";
