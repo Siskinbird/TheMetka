@@ -44,17 +44,19 @@ export default {
             state.notes.unshift(newNote)
             localStorage.setItem('notes', JSON.stringify(state.notes))
         },
+
         removeNote(state, id) {
             let tempArr = JSON.parse(localStorage.getItem('notes'));
-            for(let i = 0; i < tempArr.length; i++) {
-                console.log(id);
-                if(tempArr[i].id === id) {
-                    console.log(tempArr.splice(i, 1));
 
-                    state.notes = [...tempArr]
-                    localStorage.setItem('notes', JSON.stringify(state.notes))
+            const updatedArr = tempArr.reduce((acc, note) => {
+                if (note.id !== id) {
+                    acc.push(note);
                 }
-            }
+                return acc;
+            }, []);
+
+            state.notes = updatedArr;
+            localStorage.setItem('notes', JSON.stringify(updatedArr));
         },
     },
     actions: {

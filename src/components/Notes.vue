@@ -154,8 +154,8 @@ export default {
       return this.$moment().format('LLL')
     },
     removeNote(id) {
-      console.log('Note id is ' + id);
-      this.$store.dispatch("removeNote", id)
+      this.$store.dispatch("removeNote", id);
+      console.log('Заметка с идентификатором' + ': ' + id + ' успешно удалена из хранилища')
     },
     editNoteTitle(i) {
       this.$store.dispatch('editNoteTitle', i)

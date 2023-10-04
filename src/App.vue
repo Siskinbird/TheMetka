@@ -56,7 +56,7 @@ import mainTitle from "@/components/MainTitle";
 import notes from "@/components/Notes";
 import search from "@/components/Search";
 import newNote from "@/components/NewNote";
-import { mapGetters } from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import appHeader from "@/components/AppHeader";
 
 
@@ -84,6 +84,7 @@ export default {
   },
 
   computed: {
+    ...mapActions(['removeNote']),
     ...mapGetters(['getSearchNotes', "getNotes"]),
     notesFilter () {
       return this.getSearchNotes(this.search)
