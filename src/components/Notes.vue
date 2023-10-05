@@ -1,7 +1,7 @@
 <template>
   <main class="notes row">
                             <!------------------------GRID TOGGLE------------------------>
-    <div class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="i">
+    <div class="note col-12 col-sm-6 g-4" :class="{'grid': !grid}" v-for="(note, i) in notes" :key="note.id">
       <article class="note-wrapper">
       <div class="note-body
                bb-col
@@ -107,17 +107,16 @@
 
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 
 export default {
-
-  //Теряем реактивность при распечатывании данных
-  // data() {
-  //   return {
-  //     notes: this.notes
-  //   }
-  // },
+// data() {
+//   return {
+//     notes: this.$store.state.notes.notes
+//
+//   }
+// },
   props: {
     //Для закрытия ошибки закомментировать пропс notes, но с ошибкой оно реактивно, без, приходится перезагружаться
      notes: {
@@ -130,49 +129,41 @@ export default {
     }
   },
   mounted() {
-    this.notes = this.$store.getters.getNotes
+    this.notes = this.getNotes
   },
   computed: {
-    ...mapGetters(['getNotes']),
+    ...mapGetters(['getNotes', 'getSearchNotes']),
+    //...mapActions(['removeNote', 'editNoteTitle', 'saveNewTitle'])
 
   },
   methods: {
-
-    // removeId() {
-    //   document.addEventListener('click', function(e){
-    //     console.log('target', e.target);
-    //     console.log('currentTarget', e.currentTarget);
-    //     console.log('evt', e);
-    //     console.log(e.target.tagName);;
-    //   });
-      // for(let noteId in this.notes) {
-      //   console.log(noteId.id);
-      // }
-    // },
     makeCalculate() {
       this.$moment.locale('ru')
       return this.$moment().format('LLL')
     },
     removeNote(id) {
       this.$store.dispatch("removeNote", id);
-      console.log('Заметка с идентификатором' + ': ' + id + ' успешно удалена из хранилища')
     },
     editNoteTitle(i) {
-      this.$store.dispatch('editNoteTitle', i)
+      this.$store.dispatch('editNoteTitle', i);
     },
     saveNewTitle(i) {
-      if (this.notes[i].title.length > 2 && this.notes[i].title.length < 30) {
-        let temporary = [];
-        temporary.push(this.notes[i].title)
-        this.notes[i].newTitle = this.notes[i].title
-        this.notes[i].date = this.makeCalculate(new Date(Date.now()))
-        this.notes[i].isEdit = false
-        localStorage.setItem('notes', JSON.stringify(this.notes))
-      } else {
-        console.log('Title must be be be be be be be be');
-      }
-
+      this.$store.dispatch('saveNewTitle', i)
+      this.notes[i].date = this.makeCalculate(new Date(Date.now()))
     },
+    // saveNewTitle(i) {
+    //   if (this.notes[i].title.length > 2 && this.notes[i].title.length < 30) {
+    //     let temporary = [];
+    //     temporary.push(this.notes[i].title)
+    //     this.notes[i].newTitle = this.notes[i].title
+    //     this.notes[i].date = this.makeCalculate(new Date(Date.now()))
+    //     this.notes[i].isEdit = false
+    //     localStorage.setItem('notes', JSON.stringify(this.notes))
+    //   } else {
+    //     console.log('Title must be be be be be be be be');
+    //   }
+    //
+    // },
     loadTitle(i) {
       let temporary = []
       temporary.push(this.notes[i].newTitle)

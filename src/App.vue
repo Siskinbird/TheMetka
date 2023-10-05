@@ -74,6 +74,7 @@ export default {
       search: '',
       grid: true,
       note: {
+        isEdit: false,
         title: '',
         newTitle: '',
         descr: '',
