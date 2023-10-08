@@ -48,7 +48,7 @@
                 v-model="note.title"
                 :state="note.title.length > 2 && 30 > note.title.length"
                 v-on:blur="loadTitle(i)"
-                @keydown.enter="saveNewTitle(i)"
+                @keydown.enter="saveNewTitle(notes[i].id)"
                 @keydown.esc="loadTitle(i)"
                 aria-describedby="input-live-help input-live-feedback"
                 autofocus
@@ -111,12 +111,7 @@ import {mapActions, mapGetters} from "vuex";
 
 
 export default {
-// data() {
-//   return {
-//     notes: this.$store.state.notes.notes
-//
-//   }
-// },
+
   props: {
     //Для закрытия ошибки закомментировать пропс notes, но с ошибкой оно реактивно, без, приходится перезагружаться
      notes: {
@@ -128,13 +123,11 @@ export default {
       required: true
     }
   },
-  mounted() {
-    this.notes = this.getNotes
-  },
+  // mounted() {
+  //   this.notes = this.getNotes
+  // },
   computed: {
     ...mapGetters(['getNotes', 'getSearchNotes']),
-    //...mapActions(['removeNote', 'editNoteTitle', 'saveNewTitle'])
-
   },
   methods: {
     makeCalculate() {
@@ -147,23 +140,10 @@ export default {
     editNoteTitle(id) {
       this.$store.dispatch('editNoteTitle', id);
     },
-    saveNewTitle(i) {
-      this.$store.dispatch('saveNewTitle', i)
-      this.notes[i].date = this.makeCalculate(new Date(Date.now()))
+    saveNewTitle(id) {
+      this.$store.dispatch('saveNewTitle', id)
+          //this.$store.state.notes[id].date = this.makeCalculate(new Date(Date.now()))
     },
-    // saveNewTitle(i) {
-    //   if (this.notes[i].title.length > 2 && this.notes[i].title.length < 30) {
-    //     let temporary = [];
-    //     temporary.push(this.notes[i].title)
-    //     this.notes[i].newTitle = this.notes[i].title
-    //     this.notes[i].date = this.makeCalculate(new Date(Date.now()))
-    //     this.notes[i].isEdit = false
-    //     localStorage.setItem('notes', JSON.stringify(this.notes))
-    //   } else {
-    //     console.log('Title must be be be be be be be be');
-    //   }
-    //
-    // },
     loadTitle(i) {
       let temporary = []
       temporary.push(this.notes[i].newTitle)
