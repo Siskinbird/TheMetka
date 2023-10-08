@@ -35,8 +35,14 @@ export default {
         },
     },
     mutations: {
-        editNoteTitle(state, index) {
-            state.notes[index].isEdit = !state.notes[index].isEdit;
+        editNoteTitle(state, id) {
+           for(let i = 0; i < state.notes.length; i++) {
+               if(state.notes[i].id === id) {
+                   console.log('папався ' + state.notes[i].id);
+                  state.notes[i].isEdit = !state.notes[i].isEdit;
+               }
+           }
+
         },
         addNote(state, newNote) {
             state.notes.unshift(newNote)

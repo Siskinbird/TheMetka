@@ -37,7 +37,7 @@
             <p id="paragraph"
                role='button'
                v-if="!notes[i].isEdit"
-               @click="editNoteTitle(i)">{{ note.title }}
+               @click="editNoteTitle(notes[i].id)">{{ note.title }}
             </p>
 
 
@@ -144,8 +144,8 @@ export default {
     removeNote(id) {
       this.$store.dispatch("removeNote", id);
     },
-    editNoteTitle(i) {
-      this.$store.dispatch('editNoteTitle', i);
+    editNoteTitle(id) {
+      this.$store.dispatch('editNoteTitle', id);
     },
     saveNewTitle(i) {
       this.$store.dispatch('saveNewTitle', i)
