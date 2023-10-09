@@ -123,9 +123,9 @@ export default {
       required: true
     }
   },
-  // mounted() {
-  //   this.notes = this.getNotes
-  // },
+  mounted() {
+    this.notes = this.getNotes
+  },
   computed: {
     ...mapGetters(['getNotes', 'getSearchNotes']),
   },
